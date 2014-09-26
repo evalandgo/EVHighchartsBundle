@@ -2,7 +2,7 @@
     "name": "ev/ev-highcharts-bundle",
     "type": "symfony-bundle",
     "description": "Highcharts bundle for Symfony2 to use the highcharts librairie javascript with php",
-    "keywords": ["chart", "highcharts", "dynamic chart", "symfony2", "bundle"],
+    "keywords": ["chart", "highcharts", "js chart", "symfony2", "bundle"],
     "homepage": "http://github.com/evalandgo/EVHighchartsBundle",
     "license": "proprietary",
 
