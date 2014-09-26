@@ -1,0 +1,36 @@
+{
+    "name": "ev/ev-highcharts-bundle",
+    "type": "symfony-bundle",
+    "description": "Highcharts bundle for Symfony2 to use the highcharts librairie javascript with php",
+    "keywords": ["chart", "highcharts", "dynamic chart", "symfony2", "bundle"],
+    "homepage": "http://github.com/evalandgo/EVHighchartsBundle",
+    "license": "proprietary",
+
+    "authors": [
+        {
+            "name": "Evalandgo Team",
+            "homepage": "http://evalandgo.com"
+        }
+    ],
+
+    "require": {
+        "php":                          ">=5.3.3",
+        "symfony/framework-bundle":     "~2.0",
+        "symfony/security-bundle":      "~2.1",
+        "twig/twig":                    "~1.5"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "EV\\HighchartsBundle": ""
+        }
+    },
+
+    "target-dir": "EV/HighchartsBundle",
+    
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
