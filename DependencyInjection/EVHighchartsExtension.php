@@ -25,6 +25,13 @@ class EVHighchartsExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
         
-        $container->setParameter('ev_highcharts.themes', array_merge($config['themes_defaults'],$config['themes']));
+        $themesConfig = array();
+        foreach($config['themes'] as $key=>$value){
+            foreach($value as $key2=>$value2){
+                $themesConfig[$key2] = $value2;
+            }
+        }
+
+        $container->setParameter('ev_highcharts.themes', array_merge($config['themes_defaults'],$themesConfig));
     }
 }

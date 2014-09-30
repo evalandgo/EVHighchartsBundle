@@ -28,7 +28,7 @@ class Themes{
         }else{ 
             $path = $kernel->locateResource($arrThemesPerso[$theme]);
         }
-
+        
         $fp = fopen ($path, "r");  
 
         $themeJson = fread ($fp, filesize($path));  

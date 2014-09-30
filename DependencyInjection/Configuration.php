@@ -23,7 +23,9 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('themes')
-                    ->prototype('scalar')->end()
+                    ->prototype('array')
+                        ->prototype('variable')->end()
+                    ->end()
                 ->end()
             ->end()
             ->addDefaultsIfNotSet()

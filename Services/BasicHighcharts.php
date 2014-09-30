@@ -35,8 +35,7 @@ class BasicHighcharts{
         return $series;
     }
     
-    private function useTheme($arrJson,$theme = null){ 
-        
+    private function useTheme($arrJson,$theme = null){
         return $this->themes->applyTheme($arrJson,$theme);
     }
     
@@ -86,7 +85,7 @@ class BasicHighcharts{
                 
         if(isset($additionalOptions['subtitle']))
             $highCharts->setSubtitle($additionalOptions['subtitle']);
-        
+                
         if(isset($additionalOptions['theme']))
             return $this->useTheme(json_encode($highCharts),$additionalOptions['theme']);
         else
