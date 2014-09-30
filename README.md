@@ -91,7 +91,7 @@ Currently this bundle have 6 basics charts:
 
 ### View
 
-```twig
+```html
     <div id="container"></div>
     {{ highcharts_generation_render('container',dataChart) }}
 ```
