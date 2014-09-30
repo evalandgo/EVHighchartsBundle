@@ -46,10 +46,10 @@ In config.yml
     ev_highcharts:
         themes: 
             - default : "@DemoAcmeBundle/Resources/public/js/default.json"
-            - red : "@DemoAcmeBundle/Resources/public/js/Themes/red.json"
+            - red : "@DemoAcmeBundle/Resources/public/js/red.json"
 ```
 
-If no theme is entered, a default theme will be applied. This can be redefined in the name of "default" as the example above.
+If no theme is entered, a default theme will be applied. This theme can be redefined in the name of "default" as the example above.
 
 ## Usage example
 
@@ -91,7 +91,7 @@ Currently this bundle have 6 basics charts:
 
 ### View
 
-```php
+```twig
     <div id="container"></div>
     {{ highcharts_generation_render('container',dataChart) }}
 ```
