@@ -42,9 +42,16 @@ class HighchartsTwigExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function render($target,$data)
+    public function render($data,$target = null)
     {
-        return $this->environment->render("EVHighchartsBundle:Highcharts:graphGenerator.html.twig",array('target'=>$target,'data'=>$data));
+        $addTarget = null;
+        
+        if($target == null){
+            $addTarget = 1;
+            $target = "container_".uniqid();
+        }
+        
+        return $this->environment->render("EVHighchartsBundle:Highcharts:graphGenerator.html.twig",array('target'=>$target,'data'=>$data,'addTarget'=>$addTarget));
     }
     
     public function getName() {
