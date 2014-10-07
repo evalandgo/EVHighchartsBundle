@@ -134,7 +134,7 @@ OR
     {{ highcharts_generation_render(data) }}
 ```
 
-### Personalized use
+### Personalized usage
 
 Highcharts Object is based on the Api of Highcharts javascript
 
