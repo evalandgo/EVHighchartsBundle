@@ -3,7 +3,7 @@ Highcharts bundle for Symfony2 to use the library javascript Highcharts with php
 
 ## Features
 - Highcharts librairie usable in php
-- Service with basics charts available
+- Factory with basics charts type available
 - Themes customizable and editable on json
 
 ## Installation and configuration
