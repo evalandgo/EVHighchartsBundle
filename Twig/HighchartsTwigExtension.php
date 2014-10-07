@@ -2,15 +2,19 @@
 
 namespace EV\HighchartsBundle\Twig;
 
+use EV\HighchartsBundle\Services\Themes;
+
 class HighchartsTwigExtension extends \Twig_Extension
 {
     /**
      * @var \Twig_Environment
     */
     protected $environment;
+    
+    protected $theme;
 
-    public function __construct(){
-        
+    public function __construct(Themes $theme){
+        $this->theme = $theme;
     }    
     
     /**
@@ -50,6 +54,8 @@ class HighchartsTwigExtension extends \Twig_Extension
             $addTarget = 1;
             $target = "container_".uniqid();
         }
+        
+        $data = $this->theme->applyTheme($data);
         
         return $this->environment->render("EVHighchartsBundle:Highcharts:graphGenerator.html.twig",array('target'=>$target,'data'=>$data,'addTarget'=>$addTarget));
     }

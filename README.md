@@ -51,51 +51,121 @@ In config.yml
 
 If no theme is entered, a default theme will be applied. This theme can be redefined in the name of "default" as the example above.
 
-## Usage example
+## Basic Usage example
 
-### Controller
+Currently this bundle have 6 basic charts type:
+- Line chart (EV\HighchartsBundle\HighchartsType\LineChartType.php)
+- Column chart (EV\HighchartsBundle\HighchartsType\ColumnChartType.php)
+- Pie chart (EV\HighchartsBundle\HighchartsType\PieChartType.php)
+- Stacked column chart (EV\HighchartsBundle\HighchartsType\StackedColumnChartType.php)
+- Gauge chart (EV\HighchartsBundle\HighchartsType\GaugeChartType.php)
 
-Currently this bundle have 6 basics charts:
-- Line chart
-- Column chart
-- Pie chart
-- Stacked column chart
-- Gauge chart
+### Service
 
+```xml
+    <service id="demo_highcharts.columnChart.type" class="Demo\AcmeBundle\Type\DemoColumnChartType">
+    </service>
+```
+
+### Own Type
 ```php
-// Acme\DemoBundle\Controller\DemoBasicChartStackedColumnController.php
 
-        $highchartsGenerator = $this->container->get('ev_basicHighcharts.services');
+// Acme\DemoBundle\Type;
 
-        //Define series of data
-        $arraySeries = array();
-        $arraySeries[0]['name'] = 'John';
-        $arraySeries[0]['data'] = array(array("y"=>2),array("y"=>6),array("y"=>4));
-        $arraySeries[2]['name'] = 'Jane';
-        $arraySeries[2]['data'] = array(array("y"=>7),array("y"=>5),array("y"=>3));
-        $arraySeries[4]['name'] = 'Joe';
-        $arraySeries[4]['data'] = array(array("y"=>8),array("y"=>2),array("y"=>7));
+use EV\HighchartsBundle\HighchartsType\DemoColumnChartType;
+
+class ColumnTypeClient extends ColumnChartType{
+    
+    public function buildHighcharts(HighchartsBuilder $highchartsBuilder) {
         
-        //Define label
         $arrayLabels = array('Apples', 'Bananas', 'Oranges');
-
-        //Change the theme
-        $additionalOptions['theme'] = "red";
 
         $labelTitle = "Eaten fruits";
 
-        $basicChartStackedColumn = $highchartsGenerator->generateBasicStackedColumn($arrayLabels,$labelTitle,$arraySeries,$additionalOptions);
+        $arraySeries = array();
+        $arraySeries[0]['name'] = 'John';
+        $arraySeries[0]['data'] = array(array("y"=>2),array("y"=>6),array("y"=>4));
+        $arraySeries[1]['name'] = 'Jane';
+        $arraySeries[1]['data'] = array(array("y"=>7),array("y"=>5),array("y"=>3));
+        $arraySeries[2]['name'] = 'Joe';
+        $arraySeries[2]['data'] = array(array("y"=>8),array("y"=>2),array("y"=>7));  
 
-        return array('dataChart' => $basicChartStackedColumn);
+        $additionalOptions = array();
+
+        parent::buildHighcharts($highchartsBuilder, $arrayLabels, $labelTitle, $arraySeries,$additionalOptions);
+        
+        return $highchartsBuilder;
+    }
+    
+}
+
+```
+
+### Controller
+
+```php
+// Acme\DemoBundle\Controller\DemoController.php
+
+    $factoryHighcharts = $this->container->get('ev_highcharts.factory.highcharts');
+
+    $highcharts = $factoryHighcharts->createHighchartsFromType($this->container->get('demo_highcharts.columnChart.type'))->createView();
+
+    return array('data' => $highcharts);
+```
+
+Function HighchartsBuilder->createView() accept 1 theme referenced by his name like he is in config
+
+```php
+
+    $highcharts = $factoryHighcharts->createHighchartsFromType($this->container->get('demo_highcharts.columnChart.type'))->createView('red');
+
 ```
 
 ### View
 
-```html
+```jinja
     <div id="container"></div>
-    {{ highcharts_generation_render('container',dataChart) }}
+    {{ highcharts_generation_render(data,'container') }}
 ```
 
-## WARNING
+OR
 
-The theme configuration of this bundle is based on the parameter ev_highcharts. Don't change the name of this parameter.
+```jinja
+    {{ highcharts_generation_render(data) }}
+```
+
+### Personalized use
+
+Highcharts Object is based on the Api of Highcharts javascript
+
+##Controller
+
+```php
+// Acme\DemoBundle\Controller\DemoController.php
+
+    $highchartsBuilder = $factoryHighcharts->createHighchartsBuilder();
+
+    $highchartObject = $highchartsBuilder->getHighcharts();
+
+    $arraySeries = array();
+    $arraySeries[0]['name'] = 'John';
+    $arraySeries[0]['data'] = array(array("y"=>2),array("y"=>6),array("y"=>4));
+    $arraySeries[1]['name'] = 'Jane';
+    $arraySeries[1]['data'] = array(array("y"=>7),array("y"=>5),array("y"=>3));
+    $arraySeries[2]['name'] = 'Joe';
+    $arraySeries[2]['data'] = array(array("y"=>8),array("y"=>2),array("y"=>7));
+
+    foreach($arraySeries as $series){
+        $serie = $highchartsBuilder->createSeries($series['name'],$series['data']);
+        $highchartObject->addSeries($serie);
+    }
+
+    $highchartObject->getYAxis()->setTitle("Eaten food");
+
+    $highchartObject->getXAxis()->setCategories(array('Pommes', 'Bananes', 'Oranges'));
+
+    $highchartObject->getChart()->setType('column');
+
+    return array('data' => $highchartsBuilder->createView());
+
+```

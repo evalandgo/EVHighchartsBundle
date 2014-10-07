@@ -1,32 +1,27 @@
 <?php
 namespace EV\HighchartsBundle\Services;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\HttpKernel\Kernel;
 
 class Themes{
     
-    protected $request;
-    protected $container;
+    protected $kernel;
+    protected $arrThemes;
     
-    public function __construct(Request $request,Container $container)
+    public function __construct(Kernel $kernel,$arrThemes)
     {        
-        $this->request = $request;
-        $this->container = $container;
+        $this->kernel = $kernel;
+        $this->arrThemes = $arrThemes;
     }
     
-    public function applyTheme($arrJson,$theme = null){ 
-        
-        $kernel = $this->container->get('kernel');
-        
-        $arrThemesPerso = $this->container->getParameter('ev_highcharts.themes');
+    public function applyTheme($highchartsView){ 
         
         $path = null;
         
-        if($theme == null){
-            $path = $kernel->locateResource($arrThemesPerso['default']);   
+        if($highchartsView->getTheme() == null){
+            $path = $this->kernel->locateResource($this->arrThemes['default']);   
         }else{ 
-            $path = $kernel->locateResource($arrThemesPerso[$theme]);
+            $path = $this->kernel->locateResource($this->arrThemes[$highchartsView->getTheme()]);
         }
         
         $fp = fopen ($path, "r");  
@@ -35,7 +30,7 @@ class Themes{
 
         fclose ($fp);
         
-        $data = array_replace_recursive(json_decode($arrJson,true), json_decode($themeJson, true) );
+        $data = array_replace_recursive(json_decode($highchartsView->getHighcharts(),true), json_decode($themeJson, true) );
         
         return json_encode($data);
     }
