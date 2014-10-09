@@ -44,8 +44,7 @@ class GaugeChartType extends AbstractHighchartsType{
         if(isset($this->additionalOptions['title']))
             $highcharts->setTitle($this->additionalOptions['title']);
                         
-        $yAxis = $highcharts->getYAxis();
-        $yAxis->setTitle($this->titleY);
+        $yAxis = $highchartsBuilder->createYAxis($this->titleY);
         
         $arrayColor = array();
         if(isset($this->additionalOptions['color'])){
@@ -71,7 +70,9 @@ class GaugeChartType extends AbstractHighchartsType{
             $yAxis->setShowFirstLabel(false);
             $yAxis->setShowLastLabel(false);
         }
-                
+           
+        $highcharts->addYAxis($yAxis);
+        
         $pane = $highcharts->getPane();
         
         if(isset($this->additionalOptions['paneCenter']))

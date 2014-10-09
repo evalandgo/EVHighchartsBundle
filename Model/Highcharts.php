@@ -84,7 +84,7 @@ class Highcharts extends Base{
          $this->title = new Title(null);
          $this->tooltip = new Tooltip();
          $this->xAxis = new XAxis();
-         $this->yAxis = new YAxis();
+         //$this->yAxis = new YAxis();
     }
     
     public function getChart() {
@@ -231,14 +231,14 @@ class Highcharts extends Base{
         $this->xAxis = $xAxis;
     }
 
+    public function addYAxis($yAxis){
+        $this->yAxis[] = $yAxis;
+        return $this;
+    }
+    
     public function getYAxis() {
         return $this->yAxis;
     }
-
-    public function setYAxis($yAxis) {
-        $this->yAxis = $yAxis;
-    }
-
     
 }
 ?>

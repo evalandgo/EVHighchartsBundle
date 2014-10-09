@@ -38,8 +38,10 @@ class ColumnChartType extends AbstractHighchartsType{
          if(isset($this->additionalOptions['title']))
             $highcharts->setTitle($this->additionalOptions['title']);
         
-        $highcharts->getXAxis()->setCategories($this->categories);
-        $highcharts->getYAxis()->setTitle($this->titleY);
+        $highcharts->getXAxis()->setCategories($this->categories);        
+        
+        $yAxis = $highchartsBuilder->createYAxis($this->titleY);
+        $highcharts->addYAxis($yAxis);
         
         foreach($this->dateSeries as $series){
             $serie = $highchartsBuilder->createSeries($series['name'],$series['data']);

@@ -7,6 +7,8 @@ use EV\HighchartsBundle\Model\Series;
 use EV\HighchartsBundle\Model\HighchartsView;
 use EV\HighchartsBundle\Model\Background;
 use EV\HighchartsBundle\Model\DataLabelsPlotOptions;
+use EV\HighchartsBundle\Model\LabelsAxis;
+use EV\HighchartsBundle\Model\YAxis;
 
 /**
  * Description of HighchartsBuilder
@@ -61,6 +63,20 @@ class HighchartsBuilder {
         $dataLabelsDataSeries->setY($y);
         
         return $dataLabelsDataSeries;
+    }
+    
+    public function createLabelsAxis($format){
+        $labelsAxis = new LabelsAxis();
+        $labelsAxis->setFormat($format);
+        
+        return $labelsAxis;
+    }
+        
+    public function createYAxis($title){
+        $yAxis = new YAxis();
+        $yAxis->getTitle()->setText($title);
+        
+        return $yAxis;
     }
     
     public function createView($theme = null) {
