@@ -24,7 +24,7 @@ class HighchartsView extends Base {
     }
     
     public function getHighcharts() {
-        return json_encode($this->highcharts);
+        return $this->highcharts->toArray();
     }
 
     public function setHighcharts($highcharts) {

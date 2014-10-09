@@ -30,7 +30,7 @@ class Themes{
 
         fclose ($fp);
         
-        $data = array_replace_recursive(json_decode($highchartsView->getHighcharts(),true), json_decode($themeJson, true) );
+        $data = array_replace_recursive($highchartsView->getHighcharts(), json_decode($themeJson, true) );
         
         return json_encode($data);
     }
