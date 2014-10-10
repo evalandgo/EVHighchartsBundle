@@ -18,6 +18,7 @@ abstract class Base
                }
            }
         }
+        
         return $var;
      }
 }

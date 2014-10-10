@@ -3,8 +3,8 @@ namespace EV\HighchartsBundle\Services;
 
 use Symfony\Component\HttpKernel\Kernel;
 
-class Themes{
-    
+class Themes
+{    
     protected $kernel;
     protected $arrThemes;
     
@@ -31,7 +31,7 @@ class Themes{
         fclose ($fp);
         
         $data = array_replace_recursive($highchartsView->getHighcharts(), json_decode($themeJson, true) );
-        
+                
         return json_encode($data);
     }
     

@@ -231,14 +231,14 @@ class Highcharts extends Base{
         $this->xAxis = $xAxis;
     }
 
-    public function addYAxis($yAxis){
+    public function addYAxis(YAxis $yAxis){
         $this->yAxis[] = $yAxis;
+        
         return $this;
     }
     
     public function getYAxis() {
         return $this->yAxis;
     }
-    
 }
 ?>

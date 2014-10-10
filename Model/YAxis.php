@@ -598,7 +598,7 @@ class YAxis extends Base{
     }
 
     public function setTitle($title, $optionsTitle = null) {
-        $newTitle = new TitleAxis();
+        $newTitle = $this->title;
         $newTitle->setText($title);
         if($optionsTitle != null){
             foreach($optionsTitle as $optionTitle=>$value){
@@ -610,7 +610,6 @@ class YAxis extends Base{
                 }
             }
         }
-        $this->title = $newTitle;
     }
 
     public function getType() {

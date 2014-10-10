@@ -74,7 +74,7 @@ class HighchartsBuilder {
         
     public function createYAxis($title){
         $yAxis = new YAxis();
-        $yAxis->getTitle()->setText($title);
+        $yAxis->setTitle($title);
         
         return $yAxis;
     }
