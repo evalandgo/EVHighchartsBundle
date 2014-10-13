@@ -32,8 +32,7 @@ class LineChartType extends AbstractHighchartsType{
         $this->additionalOptions = $additionalOptions;
         
         $highcharts = $highchartsBuilder->getHighcharts();
-        
-        //$highcharts->getExporting()->setEnabled(false);
+                
         $highcharts->getChart()->setType('line');
         
          if(isset($this->additionalOptions['title']))
