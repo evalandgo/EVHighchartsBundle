@@ -42,9 +42,9 @@ class LineChartType extends AbstractHighchartsType{
         
         $yAxis = $highchartsBuilder->createYAxis($this->titleY);
         $highcharts->addYAxis($yAxis);
-        
+
         foreach($this->dateSeries as $series){
-            $serie = $highchartsBuilder->createSeries($series['name'],$series['data']);
+            $serie = $highchartsBuilder->createSeries($series['name'],$series['data'],$this->additionalOptions);
             $highcharts->addSeries($serie);
         }
         
