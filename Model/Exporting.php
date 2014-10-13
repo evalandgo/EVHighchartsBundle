@@ -24,7 +24,7 @@ class Exporting extends Base{
         
     protected $type = "image/png";
         
-    protected $url = "http =";//export.highcharts.com;
+    //protected $url = "http =";//export.highcharts.com;
         
     protected $width = "undefined";
         

@@ -38,7 +38,7 @@ class Highcharts extends Base{
     
     protected $drilldown;
     
-    //protected $exporting;
+    protected $exporting;
     
     protected $labels;
     
@@ -72,7 +72,7 @@ class Highcharts extends Base{
          $this->colors = array('#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9','#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1');
          $this->credits = new Credit();
          $this->drilldown = new Drilldown();
-         //$this->exporting = new Exporting();
+         $this->exporting = new Exporting();
          $this->legend = new Legend();
          $this->labels = new Labels();
          $this->loading = new Loading();
@@ -119,13 +119,13 @@ class Highcharts extends Base{
         $this->drilldown = $drilldown;
     }
 
-    /*public function getExporting() {
+    public function getExporting() {
         return $this->exporting;
     }
 
     public function setExporting($exporting) {
         $this->exporting = $exporting;
-    }*/
+    }
 
     public function getLabels() {
         return $this->labels;

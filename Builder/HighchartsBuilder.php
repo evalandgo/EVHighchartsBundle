@@ -79,6 +79,12 @@ class HighchartsBuilder {
         return $yAxis;
     }
     
+    public function addYAxis($title){
+        $yAxis = $this->createYAxis($title);
+        $this->highcharts->addYAxis($yAxis);
+        return $this;
+    }
+    
     public function createView($theme = null) {
         $this->highchartsView = new HighchartsView($this->highcharts,$theme);
         return $this->highchartsView;

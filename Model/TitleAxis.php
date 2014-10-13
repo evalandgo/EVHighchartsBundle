@@ -13,7 +13,7 @@ class TitleAxis extends Base{
     
     protected $offset = null;
     
-    protected $rotation = 0;
+    protected $rotation = 270;
     
     protected $style = array("color" => "#707070", "fontWeight" => "bold");
     
