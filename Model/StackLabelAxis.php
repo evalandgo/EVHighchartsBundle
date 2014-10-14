@@ -7,7 +7,7 @@ class StackLabelAxis extends Base{
     
     protected $align =  null;
     
-    protected $enabled =  true;
+    protected $enabled =  false;
     
     protected $format =  '{total}';
     
