@@ -138,15 +138,11 @@ class YAxis extends Base{
     
     protected $type = "linear";
     
-    public function __construct($stacked = null)
+    public function __construct()
     {
          $this->title = new TitleAxis();
          $this->labels = new LabelsAxis();
-         
-         if($stacked != null)
-            $this->stackLabels = new StackLabelAxis(true);
-         else
-             $this->stackLabels = new StackLabelAxis(false);
+         $this->stackLabels = new StackLabelAxis();
     }
     
     public function getAllowDecimals() {

@@ -7,7 +7,7 @@ class StackLabelAxis extends Base{
     
     protected $align =  null;
     
-    protected $enabled;
+    protected $enabled =  false;
     
     protected $format =  '{total}';
     
@@ -24,10 +24,6 @@ class StackLabelAxis extends Base{
     protected $verticalAlign =  null;
     
     protected $x =  null;
-    
-    public function __construct($enabled) {
-        $this->enabled = $enabled;
-    }
     
     public function getAlign() {
         return $this->align;
