@@ -8,6 +8,7 @@ use EV\HighchartsBundle\Model\HighchartsView;
 use EV\HighchartsBundle\Model\Background;
 use EV\HighchartsBundle\Model\DataLabelsPlotOptions;
 use EV\HighchartsBundle\Model\LabelsAxis;
+use EV\HighchartsBundle\Model\StackLabelsAxis;
 use EV\HighchartsBundle\Model\YAxis;
 
 /**
@@ -67,6 +68,13 @@ class HighchartsBuilder {
     
     public function createLabelsAxis($format){
         $labelsAxis = new LabelsAxis();
+        $labelsAxis->setFormat($format);
+        
+        return $labelsAxis;
+    }
+    
+    public function createStackLabelsAxis($format){
+        $labelsAxis = new StackLabelsAxis();
         $labelsAxis->setFormat($format);
         
         return $labelsAxis;
