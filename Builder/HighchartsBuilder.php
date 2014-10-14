@@ -80,8 +80,8 @@ class HighchartsBuilder {
         return $labelsAxis;
     }
         
-    public function createYAxis($title){
-        $yAxis = new YAxis();
+    public function createYAxis($title, $stacked = null){
+        $yAxis = new YAxis($stacked);
         $yAxis->setTitle($title);
         
         return $yAxis;
