@@ -33,7 +33,7 @@ class SeriesPlotOptions extends Base{
     
     protected $dashStyle = null;
     
-    protected $dataLabels;
+    //protected $dataLabels;
     
     protected $enableMouseTracking = true;
     
@@ -79,7 +79,7 @@ class SeriesPlotOptions extends Base{
             
     public function __construct()
     {
-        $this->dataLabels = new DataLabelsPlotOptions();
+        //$this->dataLabels = new DataLabelsPlotOptions();
         $this->states = new StatesPlotOptions();
         $this->tooltip = new TooltipPlotOptions();   
         $this->marker = new Marker();

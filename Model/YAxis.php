@@ -142,7 +142,6 @@ class YAxis extends Base{
     {
          $this->title = new TitleAxis();
          $this->labels = new LabelsAxis();
-         $this->stackLabels = new StackLabelAxis();
     }
     
     public function getAllowDecimals() {
