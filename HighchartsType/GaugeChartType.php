@@ -45,8 +45,8 @@ class GaugeChartType extends AbstractHighchartsType{
         $chart->setPlotBackgroundImage(null);
         $chart->setPlotBorderWidth(0);
         $chart->setPlotShadow(false);
-        $chart->setMarginLeft(100);
-        $chart->setMarginRight(100);
+        $chart->setMarginLeft(20);
+        $chart->setMarginRight(30);
         
         if(isset($this->additionalOptions['chartHeight']))
             $highcharts->getChart()->setHeight($this->additionalOptions['chartHeight']);
