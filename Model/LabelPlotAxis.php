@@ -19,9 +19,9 @@ class LabelPlotAxis extends Base{
     
     protected $verticalAlign =  "top";
     
-    protected $x =  null;
+    //protected $x =  null;
     
-    protected $y =  null;
+    //protected $y =  null;
     
     public function getAlign() {
         return $this->align;

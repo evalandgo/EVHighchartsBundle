@@ -13,6 +13,8 @@ class Pane extends Base{
     
     protected $startAngle = null;
     
+    protected $size = '85%';
+    
     public function getBackground() {
         return $this->background;
     }
@@ -43,6 +45,14 @@ class Pane extends Base{
 
     public function setStartAngle($startAngle) {
         $this->startAngle = $startAngle;
+    }
+    
+    public function getSize() {
+        return $this->size;
+    }
+
+    public function setSize($size) {
+        $this->size = $size;
     }
 
 }

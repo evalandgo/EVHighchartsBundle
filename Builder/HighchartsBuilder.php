@@ -10,6 +10,7 @@ use EV\HighchartsBundle\Model\DataLabelsPlotOptions;
 use EV\HighchartsBundle\Model\LabelsAxis;
 use EV\HighchartsBundle\Model\StackLabelAxis;
 use EV\HighchartsBundle\Model\YAxis;
+use EV\HighchartsBundle\Model\PlotBandsAxis;
 
 /**
  * Description of HighchartsBuilder
@@ -85,6 +86,22 @@ class HighchartsBuilder {
         $yAxis->setTitle($title);
         
         return $yAxis;
+    }
+    
+    public function addPlotBandsAxis($axis,$from,$to,$color,$thickness,$title,$align,$vertical){
+        $plotBands = new PlotBandsAxis;
+        $plotBands->setFrom($from);
+        $plotBands->setTo($to);
+        $plotBands->setColor($color);
+        $plotBands->setThickness($thickness);
+        $plotBands->getLabel()->setText($title);
+        $plotBands->getLabel()->setAlign($align);
+        $plotBands->getLabel()->setVerticalAlign($vertical);
+        $plotBands->getLabel()->setUseHtml(true);
+        
+        $axis->addPlotBands($plotBands);
+        
+        return $this;
     }
     
     public function addYAxis($title){

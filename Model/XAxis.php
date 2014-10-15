@@ -398,8 +398,8 @@ class XAxis extends Base{
         return $this->plotBands;
     }
 
-    public function setPlotBands($plotBands) {
-        $this->plotBands = $plotBands;
+    public function addPlotBands($plotBands) {
+        $this->plotBands[] = $plotBands;
     }
 
     public function getPlotLines() {

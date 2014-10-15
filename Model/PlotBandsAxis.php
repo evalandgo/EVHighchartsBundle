@@ -6,6 +6,10 @@ use EV\HighchartsBundle\Model\LabelPlotAxis;
 
 class PlotBandsAxis extends Base{
     
+    protected $borderColor = null;
+    
+    protected $borderWidth = 0;
+    
     protected $color =  null;
     
     protected $events =  null;
@@ -14,7 +18,13 @@ class PlotBandsAxis extends Base{
     
     protected $id =  null;
     
+    protected $innerRadius = null;
+    
     protected $label;
+    
+    protected $outerRadius = '100%';
+    
+    protected $thickness = 10;
     
     protected $to =  null;
     
@@ -79,6 +89,46 @@ class PlotBandsAxis extends Base{
 
     public function setZIndex($zIndex) {
         $this->zIndex = $zIndex;
+    }
+
+    public function getBorderColor() {
+        return $this->borderColor;
+    }
+
+    public function setBorderColor($borderColor) {
+        $this->borderColor = $borderColor;
+    }
+
+    public function getBorderWidth() {
+        return $this->borderWidth;
+    }
+
+    public function setBorderWidth($borderWidth) {
+        $this->borderWidth = $borderWidth;
+    }
+
+    public function getInnerRadius() {
+        return $this->innerRadius;
+    }
+
+    public function setInnerRadius($innerRadius) {
+        $this->innerRadius = $innerRadius;
+    }
+
+    public function getOuterRadius() {
+        return $this->outerRadius;
+    }
+
+    public function setOuterRadius($outerRadius) {
+        $this->outerRadius = $outerRadius;
+    }
+
+    public function getThickness() {
+        return $this->thickness;
+    }
+
+    public function setThickness($thickness) {
+        $this->thickness = $thickness;
     }
 
 }
