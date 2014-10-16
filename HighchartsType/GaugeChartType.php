@@ -56,9 +56,9 @@ class GaugeChartType extends AbstractHighchartsType{
                         
         $yAxis = $highchartsBuilder->createYAxis($this->titleY);
                         
-        $yAxis->getLabels()->setX(-5);
+        /*$yAxis->getLabels()->setX(-5);
         $yAxis->getLabels()->setFormat('{value}');
-        $yAxis->getLabels()->setUseHtml(true);
+        $yAxis->getLabels()->setUseHtml(true);*/
         $yAxis->getLabels()->setEnabled(false);
                 
         $yAxis->setTickPositions(array(0,20,50,80,100));
@@ -66,6 +66,8 @@ class GaugeChartType extends AbstractHighchartsType{
         $yAxis->setMin($this->valMin);
         $yAxis->setMax($this->valMax);
             
+        
+        
         
         foreach($this->arrPlotBands as $plotBand){
             $highchartsBuilder->addPlotBandsAxis($yAxis,$plotBand['from'],$plotBand['to'],$plotBand['color'],'50%',$plotBand['label'],$plotBand['align'],$plotBand['verticalAlign']);
@@ -122,8 +124,8 @@ class GaugeChartType extends AbstractHighchartsType{
         
         $highcharts->addSeries($serie);
         
-        $highcharts->getLegend()->setEnabled(false);
-
+        //$highcharts->getLegend()->setEnabled(false);
+        
         return $highchartsBuilder;
     }
     
