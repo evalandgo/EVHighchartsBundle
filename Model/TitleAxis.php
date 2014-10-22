@@ -19,6 +19,8 @@ class TitleAxis extends Base{
     
     protected $text = null;
     
+    protected $y = 0;
+    
     public function __construct()
     {
          
@@ -78,6 +80,14 @@ class TitleAxis extends Base{
 
     public function setText($text) {
         $this->text = $text;
+    }
+    
+    public function getY() {
+        return $this->y;
+    }
+
+    public function setY($y) {
+        $this->y = $y;
     }
 
 }
