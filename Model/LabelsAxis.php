@@ -29,7 +29,7 @@ class LabelsAxis extends Base{
     
     protected $useHTML =  false;
     
-    protected $x = -15;
+    protected $x = 0;
     
     protected $y =  null;
     
