@@ -19,7 +19,7 @@ class Series extends Base{
     protected $legendIndex = null;
         
     protected $name = null;
-        
+            
     protected $stack = null;
         
     protected $type = null;

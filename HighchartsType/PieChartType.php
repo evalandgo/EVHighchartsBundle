@@ -30,7 +30,7 @@ class PieChartType extends AbstractHighchartsType{
         $highcharts->getChart()->setType('pie');
         
         $highcharts->getChart()->setPlotBackgroundColor(null);
-        $highcharts->getChart()->setPlotBorderWidth(1);
+        $highcharts->getChart()->setPlotBorderWidth(0);
         $highcharts->getChart()->setPlotShadow(false);
         
         if(isset($this->additionalOptions['title']))
