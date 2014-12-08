@@ -16,7 +16,7 @@ class StackedColumnChartType extends AbstractHighchartsType{
     
     protected $titleY;
     
-    protected $dateSeries;
+    protected $dataSeries;
     
     protected $additionalOptions;
     
@@ -28,7 +28,7 @@ class StackedColumnChartType extends AbstractHighchartsType{
                         
         $this->categories = $categories;
         $this->titleY = $titleY;
-        $this->dateSeries = $dataSeries;
+        $this->dataSeries = $dataSeries;
         $this->additionalOptions = $additionalOptions;
         
         $highcharts = $highchartsBuilder->getHighcharts();
@@ -47,7 +47,7 @@ class StackedColumnChartType extends AbstractHighchartsType{
         $yAxis = $highchartsBuilder->createYAxis($this->titleY);
         $highcharts->addYAxis($yAxis);
         
-        foreach($this->dateSeries as $series){
+        foreach($this->dataSeries as $series){
             $serie = $highchartsBuilder->createSeries($series['name'],$series['data'],$this->additionalOptions);
             $highcharts->addSeries($serie);
         }

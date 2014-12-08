@@ -12,7 +12,7 @@ use EV\HighchartsBundle\Builder\HighchartsBuilder;
  */
 class DonutChartType extends AbstractHighchartsType{
         
-    protected $dateSeries;
+    protected $dataSeries;
     
     protected $additionalOptions;
     
@@ -22,7 +22,7 @@ class DonutChartType extends AbstractHighchartsType{
     
     public function buildHighcharts(HighchartsBuilder $highchartsBuilder,$dataSeries = null,$additionalOptions = null) {
 
-        $this->dateSeries = $dataSeries;
+        $this->dataSeries = $dataSeries;
         $this->additionalOptions = $additionalOptions;
         
         $highcharts = $highchartsBuilder->getHighcharts();
@@ -35,8 +35,11 @@ class DonutChartType extends AbstractHighchartsType{
         
         $arrOptionSeries = array();
         $arrOptionSeries['series'] = array('size'=>'60%','innerSize'=>'20%','showInLegend'=>true);
-        $serie = $highchartsBuilder->createSeries($this->dateSeries['name'],$this->dateSeries['data'],$arrOptionSeries);
-        $highcharts->addSeries($serie);
+        
+        foreach($this->dataSeries as $series){
+            $serie = $highchartsBuilder->createSeries($series['name'],$series['data'],$this->additionalOptions);
+            $highcharts->addSeries($serie);
+        }
         
         if(isset($this->additionalOptions['subtitle']))
             $highcharts->setSubtitle($this->additionalOptions['subtitle']);
