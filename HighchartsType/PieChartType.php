@@ -33,6 +33,9 @@ class PieChartType extends AbstractHighchartsType{
         $highcharts->getChart()->setPlotBorderWidth(0);
         $highcharts->getChart()->setPlotShadow(false);
         
+        if(isset($this->additionalOptions['legend']))
+            $highcharts->getLegend()->setWidth($this->additionalOptions['legend']);
+        
         if(isset($this->additionalOptions['title']))
             $highcharts->setTitle($this->additionalOptions['title']);
         
