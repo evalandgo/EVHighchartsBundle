@@ -40,6 +40,10 @@ class StackedColumnChartType extends AbstractHighchartsType{
         
         $highcharts->getXAxis()->setCategories($this->categories);
         
+        if(isset($this->additionalOptions['labelStackColumnStep'])){
+            $highcharts->getXAxis()->getLabels()->setStep($this->additionalOptions['labelStackColumnStep']);
+        }
+        
         $yAxis = $highchartsBuilder->createYAxis($this->titleY);
         $highcharts->addYAxis($yAxis);
         
