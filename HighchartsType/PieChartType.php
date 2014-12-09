@@ -4,6 +4,7 @@ namespace EV\HighchartsBundle\HighchartsType;
 
 use EV\HighchartsBundle\HighchartsType\AbstractHighchartsType;
 use EV\HighchartsBundle\Builder\HighchartsBuilder;
+use EV\HighchartsBundle\Model\DataLabelsPiePlotOptions;
 
 /**
  * Description of PieChartType
@@ -44,6 +45,13 @@ class PieChartType extends AbstractHighchartsType{
         
         $arrOptionSeries = array();
         $arrOptionSeries['series'] = array('type'=>'pie');
+        
+        if(isset($this->additionalOptions['data']) && isset($this->additionalOptions['data']['labels']) ){
+            $dataLabels = new DataLabelsPiePlotOptions();
+            $dataLabels->setEnabled($this->additionalOptions['data']['labels']);
+            $arrOptionSeries['data'] = array('dataLabels'=>$dataLabels);
+        }
+        
         $serie = $highchartsBuilder->createSeries($this->dateSeries['name'],$this->dateSeries['data'],$arrOptionSeries);
         $highcharts->addSeries($serie);
         
