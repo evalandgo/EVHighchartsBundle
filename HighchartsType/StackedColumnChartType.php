@@ -20,16 +20,19 @@ class StackedColumnChartType extends AbstractHighchartsType{
     
     protected $additionalOptions;
     
+    protected $formatLabelStackedColumn;
+    
     public function __construct(){
         
     }
     
-    public function buildHighcharts(HighchartsBuilder $highchartsBuilder,$categories = null,$titleY = null,$dataSeries = null,$additionalOptions = null) {
+    public function buildHighcharts(HighchartsBuilder $highchartsBuilder,$categories = null,$titleY = null,$dataSeries = null,$formatLabelStackedColumn = null,$additionalOptions = null) {
                         
         $this->categories = $categories;
         $this->titleY = $titleY;
         $this->dataSeries = $dataSeries;
         $this->additionalOptions = $additionalOptions;
+        $this->formatLabelStackedColumn = $formatLabelStackedColumn;
         
         $highcharts = $highchartsBuilder->getHighcharts();
         
@@ -44,7 +47,17 @@ class StackedColumnChartType extends AbstractHighchartsType{
             $highcharts->getXAxis()->getLabels()->setStep($this->additionalOptions['labelStackColumnStep']);
         }
         
-        $yAxis = $highchartsBuilder->createYAxis($this->titleY);
+        $labelStackColumn = $highchartsBuilder->createLabelsAxis($this->formatLabelStackedColumn); 
+        $labelStackColumn->setX(-15);
+        
+        $yAxis = $highchartsBuilder->createYAxis($this->titleYStackedColumn);
+        $yAxis->setLabels($labelStackColumn);
+        $yAxis->setLineWidth(1);
+        $yAxis->getTitle()->setAlign('high');
+        $yAxis->getTitle()->setOffset(0);
+        $yAxis->getTitle()->setRotation(0);
+        $yAxis->getTitle()->setY(-20);
+        $yAxis->getTitle()->setX(0);
         $highcharts->addYAxis($yAxis);
         
         foreach($this->dataSeries as $series){
@@ -55,7 +68,7 @@ class StackedColumnChartType extends AbstractHighchartsType{
         if(isset($this->additionalOptions['subtitle']))
             $highcharts->setSubtitle($this->additionalOptions['subtitle']);
         
-        $yAxis = $highcharts->getYAxis();
+        //$yAxis = $highcharts->getYAxis();
         
         $stackLabels = $yAxis[0]->getStackLabels();
         $stackLabels->setEnabled(true);
