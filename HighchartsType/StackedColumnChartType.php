@@ -68,7 +68,7 @@ class StackedColumnChartType extends AbstractHighchartsType{
         if(isset($this->additionalOptions['subtitle']))
             $highcharts->setSubtitle($this->additionalOptions['subtitle']);
         
-        //$yAxis = $highcharts->getYAxis();
+        $yAxis = $highcharts->getYAxis();
         
         $stackLabels = $yAxis[0]->getStackLabels();
         $stackLabels->setEnabled(true);
