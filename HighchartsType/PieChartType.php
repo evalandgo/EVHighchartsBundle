@@ -67,6 +67,8 @@ class PieChartType extends AbstractHighchartsType{
         $dataLabels = $pie->getDatalabels();
         $dataLabels->setEnabled(true);
         $dataLabels->setFormat('<b>{point.percentage:.1f}</b>');
+        
+        $highcharts->getLegend()->setX(35);
 
         return $highchartsBuilder;
     }
