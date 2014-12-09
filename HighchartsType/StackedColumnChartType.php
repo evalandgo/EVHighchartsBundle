@@ -50,7 +50,7 @@ class StackedColumnChartType extends AbstractHighchartsType{
         $labelStackColumn = $highchartsBuilder->createLabelsAxis($this->formatLabelStackedColumn); 
         $labelStackColumn->setX(-15);
         
-        $yAxis = $highchartsBuilder->createYAxis($this->titleYStackedColumn);
+        $yAxis = $highchartsBuilder->createYAxis($this->titleY);
         $yAxis->setLabels($labelStackColumn);
         $yAxis->setLineWidth(1);
         $yAxis->getTitle()->setAlign('high');
