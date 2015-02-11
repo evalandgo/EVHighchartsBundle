@@ -12,6 +12,8 @@ use EV\HighchartsBundle\Model\StackLabelAxis;
 use EV\HighchartsBundle\Model\YAxis;
 use EV\HighchartsBundle\Model\PlotBandsAxis;
 
+use Symfony\Component\Filesystem\Filesystem;
+
 /**
  * Description of HighchartsBuilder
  *
@@ -115,12 +117,14 @@ class HighchartsBuilder {
         return $this->highchartsView;
     }
     
-    public function export($url,$dir_destination,$type = 'image/jpeg', $async = true){
+    public function export($url,$dir_destination,$type = 'image/jpeg'){
+            $fs = new Filesystem();
+        
             $tab_convert = array('image/jpeg' => 'jpg', 'image/png' => 'png', 'application/pdf' => 'pdf', 'image/svg+xml' => 'svg');
                     
             $graphJson = json_encode($this->highcharts);
 
-            $data = array('async' => $async,'type' => $type,'options' => $graphJson);
+            $data = array('async' => false,'type' => $type,'options' => $graphJson);
 
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST'); 
@@ -130,13 +134,9 @@ class HighchartsBuilder {
             $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
 
-            $link = $url.'/'.$exec;
-
             $newLink = $dir_destination."/".uniqid().".".$tab_convert[$type];
-
-            $img = $this->webPath.$newLink;
-
-            file_put_contents($img, file_get_contents($link));   
+            
+            $fs->dumpFileInWeb($newLink,$exec); 
 
             return $newLink;
     }
