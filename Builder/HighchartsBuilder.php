@@ -117,11 +117,9 @@ class HighchartsBuilder {
         return $this->highchartsView;
     }
     
-    public function export($url,$dir_destination,$type = 'image/jpeg'){
+    public function export($url,$content,$type = 'image/jpeg'){
             $fs = new Filesystem();
-        
-            $tab_convert = array('image/jpeg' => 'jpg', 'image/png' => 'png', 'application/pdf' => 'pdf', 'image/svg+xml' => 'svg');
-                    
+                            
             $graphJson = json_encode($this->highcharts);
 
             $data = array('async' => false,'type' => $type,'options' => $graphJson);
@@ -133,12 +131,10 @@ class HighchartsBuilder {
             $exec = curl_exec($ch);
             $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
-
-            $newLink = $dir_destination."/".uniqid().".".$tab_convert[$type];
             
-            $fs->dumpFileInWeb($newLink,$exec); 
+            $fs->dumpFileInWeb($content,$exec); 
 
-            return $newLink;
+            return $content;
     }
     
 }
