@@ -34,7 +34,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('default')
-                        ->defaultValue('@EVHighchartsBundle/Resources/public/js/Themes/default.json')
+                        ->defaultValue('@EVListBundle/Resources/public/js/listOrderby.js')
                         ->end()
                     ->end()
                 ->end()

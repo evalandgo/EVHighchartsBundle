@@ -115,6 +115,32 @@ class HighchartsBuilder {
         return $this->highchartsView;
     }
     
+    public function export($url,$dir_destination,$type = 'image/jpeg', $async = true){
+            $tab_convert = array('image/jpeg' => 'jpg', 'image/png' => 'png', 'application/pdf' => 'pdf', 'image/svg+xml' => 'svg');
+                    
+            $graphJson = json_encode($this->highcharts);
+
+            $data = array('async' => $async,'type' => $type,'options' => $graphJson);
+
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST'); 
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data); 
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $exec = curl_exec($ch);
+            $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            $link = $url.'/'.$exec;
+
+            $newLink = $dir_destination."/".uniqid().".".$tab_convert[$type];
+
+            $img = $this->webPath.$newLink;
+
+            file_put_contents($img, file_get_contents($link));   
+
+            return $newLink;
+    }
+    
 }
 
 ?>
