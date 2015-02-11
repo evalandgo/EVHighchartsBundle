@@ -132,9 +132,9 @@ class HighchartsBuilder {
             $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
             
-            $fs->dumpFileInWeb($content,$exec); 
+            $fs->dumpFile($content,$exec); 
 
-            return $content;
+            return $statut;
     }
     
 }
