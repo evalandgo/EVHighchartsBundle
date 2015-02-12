@@ -120,19 +120,26 @@ class HighchartsBuilder {
     public function export($url,$content,$type = 'image/jpeg'){
             $fs = new Filesystem();
                             
-            $graphJson = json_encode($this->highcharts);
-
+            $graphJson = json_encode($this->createView()->getHighcharts());
+            
             $data = array('async' => false,'type' => $type,'options' => $graphJson);
-
-            $ch = curl_init($url);
+            
+            $ch = curl_init();
+            
+            curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST'); 
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data); 
+            curl_setopt($ch, CURLOPT_HEADER,false);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_VERBOSE, false); 
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
             $exec = curl_exec($ch);
             $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
             
-            $fs->dumpFile($content,$exec); 
+            if($statut == 200)
+                $fs->dumpFile($content,$exec); 
 
             return $statut;
     }
