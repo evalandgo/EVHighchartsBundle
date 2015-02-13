@@ -7,7 +7,7 @@
 
     <services>
         <service id="ev_highchartsThemes.services" class="EV\HighchartsBundle\Services\Themes">
-            <argument type="service" id="kernel" />
+            <argument type="service" id="file_locator" />
             <argument>%ev_highcharts.themes%</argument>
         </service>
         <service id="ev_highcharts.factory.highcharts" class="EV\HighchartsBundle\Factory\HighchartsFactory">

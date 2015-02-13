@@ -1,23 +1,23 @@
 <?php
 namespace EV\HighchartsBundle\Services;
 
-use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\Config\FileLocator;
 
 class Themes
 {    
-    protected $kernel;
+    protected $fileLocator;
     protected $arrThemes;
     
-    public function __construct(Kernel $kernel,$arrThemes)
+    public function __construct(FileLocator $fileLocator,$arrThemes)
     {        
-        $this->kernel = $kernel;
+        $this->fileLocator = $fileLocator;
         $this->arrThemes = $arrThemes;
     }
     
     public function applyTheme($highchartsView){ 
         
         $path = null;
-        
+            
         if($highchartsView->getTheme() == null){
             $path = $this->kernel->locateResource($this->arrThemes['default']);   
         }else{ 
