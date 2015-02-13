@@ -19,9 +19,9 @@ class Themes
         $path = null;
             
         if($highchartsView->getTheme() == null){
-            $path = $this->fileLocator->locateResource($this->arrThemes['default']);   
+            $path = $this->fileLocator->locate($this->arrThemes['default']);   
         }else{ 
-            $path = $this->fileLocator->locateResource($this->arrThemes[$highchartsView->getTheme()]);
+            $path = $this->fileLocator->locate($this->arrThemes[$highchartsView->getTheme()]);
         }
         
         $fp = fopen ($path, "r");  
