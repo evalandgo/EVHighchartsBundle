@@ -105,8 +105,8 @@ class HighchartsBuilder {
             }else{
                 return "La méthode ".$method." n'éxiste pas dans Series.php";
             }
-
         }
+        return $dataLabels;
     }
     
     public function addPlotBandsAxis($axis,$from,$to,$color,$thickness,$title,$align,$vertical){
