@@ -94,6 +94,21 @@ class HighchartsBuilder {
         return $yAxis;
     }
     
+    public function createDataLabelsAdvanced($arrOptions){
+        $dataLabels = new DataLabelsPlotOptions();
+        
+        foreach($arrOptions as $typeOption => $option){
+            $method = "set".ucfirst($typeOption);
+
+            if(method_exists($dataLabels, $method)){
+                $dataLabels->$method($option);
+            }else{
+                return "La méthode ".$method." n'éxiste pas dans Series.php";
+            }
+
+        }
+    }
+    
     public function addPlotBandsAxis($axis,$from,$to,$color,$thickness,$title,$align,$vertical){
         $plotBands = new PlotBandsAxis;
         $plotBands->setFrom($from);

@@ -3,12 +3,13 @@ namespace EV\HighchartsBundle\Model;
 
 use EV\HighchartsBundle\Model\Base;
 use EV\HighchartsBundle\Model\Marker;
+use EV\HighchartsBundle\Model\DataLabelsPlotOptions;
 
 class DataSeries extends Base{
     
     protected $color = null;
     
-    protected $dataLabels = null;
+    protected $dataLabels;
     
     protected $drilldown;
     
@@ -35,6 +36,7 @@ class DataSeries extends Base{
     public function __construct()
     {
          $this->marker = new Marker();
+         $this->dataLabels = new DataLabelsPlotOptions();
     }
     
     public function getColor() {
