@@ -3,12 +3,13 @@ namespace EV\HighchartsBundle\Model;
 
 use EV\HighchartsBundle\Model\Base;
 use EV\HighchartsBundle\Model\ButtonsExporting;
+use EV\HighchartsBundle\Model\ChartOptions;
 
 class Exporting extends Base{
     
     protected $buttons;
         
-    protected $chartOptions = null;
+    protected $chartOptions;
         
     protected $enabled = true;
         
@@ -31,6 +32,7 @@ class Exporting extends Base{
     public function __construct()
     {
         $this->buttons = new ButtonsExporting();
+        $this->chartOptions = new ChartOptions();
     }
     
     public function getButtons() {
