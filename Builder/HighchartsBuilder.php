@@ -11,6 +11,7 @@ use EV\HighchartsBundle\Model\LabelsAxis;
 use EV\HighchartsBundle\Model\StackLabelAxis;
 use EV\HighchartsBundle\Model\YAxis;
 use EV\HighchartsBundle\Model\PlotBandsAxis;
+use EV\HighchartsBundle\Services\Themes;
 
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -24,9 +25,12 @@ class HighchartsBuilder {
     protected $highcharts;
     
     protected $highchartsView;
-
-    public function __construct() {
+    
+    protected $themes;
+    
+    public function __construct(Themes $themes) {
         $this->highcharts = new Highcharts();
+        $this->themes = $themes;
     }
     
     public function getHighcharts(){
@@ -117,31 +121,31 @@ class HighchartsBuilder {
         return $this->highchartsView;
     }
     
-    public function export($url,$content,$type = 'image/jpeg'){
-            $fs = new Filesystem();
-                            
-            $graphJson = json_encode($this->createView()->getHighcharts());
-            
-            $data = array('async' => false,'type' => $type,'options' => $graphJson);
-            
-            $ch = curl_init();
-            
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST'); 
-            curl_setopt($ch, CURLOPT_HEADER,false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_VERBOSE, false); 
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-            $exec = curl_exec($ch);
-            $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
-            
-            if($statut == 200)
-                $fs->dumpFile($content,$exec); 
+    public function export($url,$content,$type = 'image/jpeg',$theme = null){
+        $fs = new Filesystem();
 
-            return $statut;
+        $graphJson = $this->themes->applyTheme($this->createView($theme));
+
+        $data = array('async' => false,'type' => $type,'options' => $graphJson);
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST'); 
+        curl_setopt($ch, CURLOPT_HEADER,false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_VERBOSE, false); 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        $exec = curl_exec($ch);
+        $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if($statut == 200)
+            $fs->dumpFile($content,$exec); 
+
+        return $statut;
     }
     
 }

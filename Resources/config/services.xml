@@ -11,6 +11,7 @@
             <argument>%ev_highcharts.themes%</argument>
         </service>
         <service id="ev_highcharts.factory.highcharts" class="EV\HighchartsBundle\Factory\HighchartsFactory">
+            <argument type="service" id="ev_highchartsThemes.services" />
         </service>
         <service id="ev.twig.highcharts_extension" class="EV\HighchartsBundle\Twig\HighchartsTwigExtension">
             <argument type="service" id="ev_highchartsThemes.services" />
