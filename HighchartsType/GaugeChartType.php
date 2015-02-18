@@ -110,8 +110,9 @@ class GaugeChartType extends AbstractHighchartsType{
         
         if(isset($this->additionalOptions['subtitle']))
             $highcharts->setSubtitle($this->additionalOptions['subtitle']);
-     
-        $dataLabelsDataSeries = $highchartsBuilder->createDataLabelsPlotOptions(20);
+        
+        $arrOptions = array('y' => 20);
+        $dataLabelsDataSeries = $highchartsBuilder->createDataLabelsAdvanced($arrOptions);
         
         if(isset($this->additionalOptions['valueFormat']))
             $dataLabelsDataSeries->setFormat('<div style="text-align:center"><span style="font-size:25px;color:black ">'.$this->additionalOptions['valueFormat'].'</span><br/>');

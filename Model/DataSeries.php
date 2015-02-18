@@ -36,7 +36,6 @@ class DataSeries extends Base{
     public function __construct()
     {
          $this->marker = new Marker();
-         $this->dataLabels = new DataLabelsSeriesPlotOptions();
     }
     
     public function getColor() {
@@ -51,7 +50,7 @@ class DataSeries extends Base{
         return $this->dataLabels;
     }
 
-    public function setDataLabels(DataLabelsSeriesPlotOptions $dataLabels) {
+    public function setDataLabels($dataLabels) {
         $this->dataLabels = $dataLabels;
     }
 

@@ -67,10 +67,18 @@ class HighchartsBuilder {
         return $background;
     }
     
-    public function createDataLabelsPlotOptions($y){
+    public function createDataLabelsPlotOptions($arrOptions){
         $dataLabelsDataSeries = new DataLabelsPlotOptions();
-        $dataLabelsDataSeries->setY($y);
         
+        foreach($arrOptions as $typeOption => $option){
+            $method = "set".ucfirst($typeOption);
+
+            if(method_exists($dataLabelsDataSeries, $method)){
+                $dataLabelsDataSeries->$method($option);
+            }else{
+                return "La méthode ".$method." n'éxiste pas dans Series.php";
+            }
+        }
         return $dataLabelsDataSeries;
     }
     
@@ -95,7 +103,7 @@ class HighchartsBuilder {
         return $yAxis;
     }
     
-    public function createDataLabelsAdvanced($arrOptions){
+    public function createDataLabelsSeriesPlotOptions($arrOptions){
         $dataLabels = new DataLabelsSeriesPlotOptions();
         
         foreach($arrOptions as $typeOption => $option){
