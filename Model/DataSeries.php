@@ -3,7 +3,7 @@ namespace EV\HighchartsBundle\Model;
 
 use EV\HighchartsBundle\Model\Base;
 use EV\HighchartsBundle\Model\Marker;
-use EV\HighchartsBundle\Model\DataLabelsPlotOptions;
+use EV\HighchartsBundle\Model\DataLabelsSeriesPlotOptions;
 
 class DataSeries extends Base{
     
@@ -36,7 +36,7 @@ class DataSeries extends Base{
     public function __construct()
     {
          $this->marker = new Marker();
-         $this->dataLabels = new DataLabelsPlotOptions();
+         $this->dataLabels = new DataLabelsSeriesPlotOptions();
     }
     
     public function getColor() {
@@ -51,7 +51,7 @@ class DataSeries extends Base{
         return $this->dataLabels;
     }
 
-    public function setDataLabels(DataLabelsPlotOptions $dataLabels) {
+    public function setDataLabels(DataLabelsSeriesPlotOptions $dataLabels) {
         $this->dataLabels = $dataLabels;
     }
 
