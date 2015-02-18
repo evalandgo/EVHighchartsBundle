@@ -7,7 +7,6 @@ use EV\HighchartsBundle\Model\Series;
 use EV\HighchartsBundle\Model\HighchartsView;
 use EV\HighchartsBundle\Model\Background;
 use EV\HighchartsBundle\Model\DataLabelsPlotOptions;
-use EV\HighchartsBundle\Model\DataLabelsSeriesPlotOptions;
 use EV\HighchartsBundle\Model\LabelsAxis;
 use EV\HighchartsBundle\Model\StackLabelAxis;
 use EV\HighchartsBundle\Model\YAxis;
@@ -95,8 +94,8 @@ class HighchartsBuilder {
         return $yAxis;
     }
     
-    public function createDataLabelsSeriesPlotOptions($arrOptions){
-        $dataLabels = new DataLabelsSeriesPlotOptions();
+    public function createDataLabelsAdvanced($arrOptions){
+        $dataLabels = new DataLabelsPlotOptions();
         
         foreach($arrOptions as $typeOption => $option){
             $method = "set".ucfirst($typeOption);
