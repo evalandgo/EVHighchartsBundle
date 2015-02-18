@@ -51,7 +51,7 @@ class DataSeries extends Base{
         return $this->dataLabels;
     }
 
-    public function setDataLabels($dataLabels) {
+    public function setDataLabels(DataLabelsSeriesPlotOptions $dataLabels) {
         $this->dataLabels = $dataLabels;
     }
 
