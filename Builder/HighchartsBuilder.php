@@ -141,7 +141,7 @@ class HighchartsBuilder {
 
         $graphJson = $this->themes->applyTheme($this->createView($theme));
 
-        $data = array('async' => false,'type' => $type,'options' => $graphJson);
+        $data = array('async' => false,'type' => $type,'options' => $graphJson,'scale' => 2);
 
         $ch = curl_init();
 
