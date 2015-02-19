@@ -45,8 +45,6 @@ class GaugeChartType extends AbstractHighchartsType{
         $chart->setPlotBackgroundImage(null);
         $chart->setPlotBorderWidth(0);
         $chart->setPlotShadow(false);
-        /*$chart->setMarginLeft(20);
-        $chart->setMarginRight(30);*/
         
         if(isset($this->additionalOptions['chartHeight']))
             $highcharts->getChart()->setHeight($this->additionalOptions['chartHeight']);
@@ -55,22 +53,16 @@ class GaugeChartType extends AbstractHighchartsType{
             $highcharts->setTitle($this->additionalOptions['title']);
                         
         $yAxis = $highchartsBuilder->createYAxis($this->titleY);
-                        
-        /*$yAxis->getLabels()->setX(-5);
-        $yAxis->getLabels()->setFormat('{value}');
-        $yAxis->getLabels()->setUseHtml(true);*/
+
         $yAxis->getLabels()->setEnabled(false);
                 
         $yAxis->setTickPositions(array(0,20,50,80,100));
         $yAxis->setMinorTickLength(0);
         $yAxis->setMin($this->valMin);
         $yAxis->setMax($this->valMax);
-            
-        
-        
-        
+
         foreach($this->arrPlotBands as $plotBand){
-            $highchartsBuilder->addPlotBandsAxis($yAxis,$plotBand['from'],$plotBand['to'],$plotBand['color'],'50%',$plotBand['label'],$plotBand['align'],$plotBand['verticalAlign']);
+            $highchartsBuilder->addPlotBandsAxis($yAxis,$plotBand,'50%');
         }
      
         $yAxis->setGridLineColor("#0000ffff");
@@ -124,9 +116,7 @@ class GaugeChartType extends AbstractHighchartsType{
         $serie = $highchartsBuilder->createSeries($this->dateSeries['name'],$this->dateSeries['data'],$arrOptionSeries);
         
         $highcharts->addSeries($serie);
-        
-        //$highcharts->getLegend()->setEnabled(false);
-        
+                
         return $highchartsBuilder;
     }
     

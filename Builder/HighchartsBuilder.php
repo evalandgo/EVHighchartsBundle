@@ -118,15 +118,21 @@ class HighchartsBuilder {
         return $dataLabels;
     }
     
-    public function addPlotBandsAxis($axis,$from,$to,$color,$thickness,$title,$align,$vertical){
+    public function addPlotBandsAxis($axis,$arrayPlotBands,$thickness){
         $plotBands = new PlotBandsAxis;
-        $plotBands->setFrom($from);
-        $plotBands->setTo($to);
-        $plotBands->setColor($color);
+        //$from,$to,$color,$thickness,$title,$align,$vertical;
+             
+        foreach($arrayPlotBands as $typeOption => $option){
+            $method = "set".ucfirst($typeOption);
+
+            if(method_exists($plotBands, $method)){
+                $plotBands->$method($option);
+            }else{
+                return "La méthode ".$method." n'éxiste pas dans Series.php";
+            }
+        }
+        
         $plotBands->setThickness($thickness);
-        $plotBands->getLabel()->setText($title);
-        $plotBands->getLabel()->setAlign($align);
-        $plotBands->getLabel()->setVerticalAlign($vertical);
         $plotBands->getLabel()->setUseHtml(true);
         
         $axis->addPlotBands($plotBands);
