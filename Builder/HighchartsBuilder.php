@@ -120,6 +120,7 @@ class HighchartsBuilder {
     
     public function addPlotBandsAxis($axis,$arrayPlotBands,$thickness){
         $plotBands = new PlotBandsAxis;
+        $label =$plotBands->getLabel();
         //$from,$to,$color,$thickness,$title,$align,$vertical;
              
         foreach($arrayPlotBands as $typeOption => $option){
@@ -127,6 +128,8 @@ class HighchartsBuilder {
 
             if(method_exists($plotBands, $method)){
                 $plotBands->$method($option);
+            }elseif(method_exists($label, $method)){
+                $label->$method($option);
             }else{
                 return "La méthode ".$method." n'éxiste pas dans Series.php";
             }
