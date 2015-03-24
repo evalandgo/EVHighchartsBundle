@@ -145,12 +145,10 @@ class HighchartsBuilder {
         return $this->highchartsView;
     }
     
-    public function export($url,$content,$type = 'image/jpeg',$theme = null){
-        $fs = new Filesystem();
-
+    public function export($url, $type = 'image/jpeg', $theme = null){
         $graphJson = $this->themes->applyTheme($this->createView($theme));
 
-        $data = array('async' => false,'type' => $type,'options' => $graphJson,'scale' => 2);
+        $data = array('async' => false, 'type' => $type, 'options' => $graphJson, 'scale' => 2);
 
         $ch = curl_init();
 
@@ -162,14 +160,37 @@ class HighchartsBuilder {
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        $exec = curl_exec($ch);
+        $content = curl_exec($ch);
         $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-        if($statut == 200)
-            $fs->dumpFile($content,$exec); 
+        return array(
+            'status' => $statut,
+            'content' => $content
+        );
+    }
+    
+    public function exportOnServer($url, $filename, $type = 'image/jpeg', $theme = null) {
+        $fs = new Filesystem();
 
-        return $statut;
+        $export = $this->export($url, $type, $theme);
+        
+        if($export['status'] == 200) {
+            $fs->dumpFile($filename, $export['content']);
+            return true;
+        }
+
+        return false;
+    }
+    
+    public function exportImgResource($url, $type = 'image/jpeg', $theme = null) {
+        $export = $this->export($url, $type, $theme);
+        
+        if($export['status'] == 200) {
+            return imagecreatefromstring($export['content']);
+        }
+
+        return false;
     }
     
 }
