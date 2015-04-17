@@ -147,7 +147,8 @@ class HighchartsBuilder {
     
     public function export($url,$content,$type = 'image/jpeg',$theme = null){
         $fs = new Filesystem();
-
+        
+        $this->highcharts->getLegend()->setUseHTML(false);
         $graphJson = $this->themes->applyTheme($this->createView($theme));
 
         $data = array('async' => false,'type' => $type,'options' => $graphJson,'scale' => 2);
