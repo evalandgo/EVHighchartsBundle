@@ -146,12 +146,14 @@ class HighchartsBuilder {
     }
     
     public function export($url, $type = 'image/jpeg', $theme = null){
+        $fs = new Filesystem();
+        
         $this->highcharts->getLegend()->setUseHTML(false);
         
         $graphJson = $this->themes->applyTheme($this->createView($theme));
 
         $data = array('async' => false, 'type' => $type, 'options' => $graphJson, 'scale' => 2);
-
+        
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -162,13 +164,15 @@ class HighchartsBuilder {
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_FAILONERROR, true);
         $content = curl_exec($ch);
         $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        
         curl_close($ch);
 
         return array(
             'status' => $statut,
-            'content' => $content
+            'content' => $content,
         );
     }
     
@@ -180,9 +184,10 @@ class HighchartsBuilder {
         if($export['status'] == 200) {
             $fs->dumpFile($filename, $export['content']);
             return true;
+        }else{
+            throw new \Exception($export['content'],$export['status']);
         }
-
-        return false;
+        
     }
     
     public function exportImgResource($url, $type = 'image/jpeg', $theme = null) {
