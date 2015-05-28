@@ -148,7 +148,7 @@ class HighchartsBuilder {
         return $this->highchartsView;
     }
     
-    public function export($url, $type = 'image/jpeg', $theme = null){
+    public function export($type = 'image/jpeg', $theme = null){
         $fs = new Filesystem();
         
         $this->highcharts->getLegend()->setUseHTML(false);
@@ -159,7 +159,7 @@ class HighchartsBuilder {
         
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, $this->export_url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST'); 
         curl_setopt($ch, CURLOPT_HEADER,false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -179,10 +179,10 @@ class HighchartsBuilder {
         );
     }
     
-    public function exportOnServer($url, $filename, $type = 'image/jpeg', $theme = null) {
+    public function exportOnServer($filename, $type = 'image/jpeg', $theme = null) {
         $fs = new Filesystem();
 
-        $export = $this->export($url, $type, $theme);
+        $export = $this->export($type, $theme);
         
         if($export['status'] == 200) {
             $fs->dumpFile($filename, $export['content']);
@@ -193,8 +193,8 @@ class HighchartsBuilder {
         
     }
     
-    public function exportImgResource($url, $type = 'image/jpeg', $theme = null) {
-        $export = $this->export($url, $type, $theme);
+    public function exportImgResource($type = 'image/jpeg', $theme = null) {
+        $export = $this->export($type, $theme);
         
         if($export['status'] == 200) {
             return imagecreatefromstring($export['content']);
