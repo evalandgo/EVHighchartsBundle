@@ -188,7 +188,7 @@ class HighchartsBuilder {
             $fs->dumpFile($filename, $export['content']);
             return true;
         }else{
-            throw new \Exception($export['content'],$export['status']);
+            //throw new \Exception($export['content'],$export['status']);
         }
         
     }
