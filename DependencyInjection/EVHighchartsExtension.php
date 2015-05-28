@@ -33,5 +33,6 @@ class EVHighchartsExtension extends Extension
         }
 
         $container->setParameter('ev_highcharts.themes', array_merge($config['themes_defaults'],$themesConfig));
+        $container->setParameter('ev_highcharts.export_url', $config['export_url']);
     }
 }

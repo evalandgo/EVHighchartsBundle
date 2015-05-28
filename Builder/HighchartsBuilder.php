@@ -29,9 +29,12 @@ class HighchartsBuilder {
     
     protected $themes;
     
-    public function __construct(Themes $themes) {
+    protected $export_url;
+    
+    public function __construct(Themes $themes,$export_url) {
         $this->highcharts = new Highcharts();
         $this->themes = $themes;
+        $this->export_url = $export_url;
     }
     
     public function getHighcharts(){
