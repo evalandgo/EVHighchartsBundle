@@ -4,6 +4,7 @@ namespace EV\HighchartsBundle\HighchartsType;
 
 use EV\HighchartsBundle\HighchartsType\AbstractHighchartsType;
 use EV\HighchartsBundle\Builder\HighchartsBuilder;
+use Symfony\Component\Translation\Translator;
 
 /**
  * Description of GaugeChartType
@@ -24,8 +25,8 @@ class GaugeChartType extends AbstractHighchartsType{
     
     protected $additionalOptions;
     
-    public function __construct(){
-        
+    public function __construct(Translator $translator){
+        parent::__construct($translator);
     }
     
     public function buildHighcharts(HighchartsBuilder $highchartsBuilder,$valMin = null,$valMax = null,$titleY = null,$dataSeries = null, $arrPlotBands = null,$additionalOptions = null) {

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-07-23T12:10:27Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="ea48cf4082fe396d7d95a76a433453201fca3122" resname="day.min.1">
+        <source>day.min.1</source>
+        <target>Dim</target>
+      </trans-unit>
+      <trans-unit id="5771aaacdd377635adee817745ad261c421d36de" resname="day.min.2">
+        <source>day.min.2</source>
+        <target>Lun</target>
+      </trans-unit>
+      <trans-unit id="c1f609fc880ce0b271f592807aea61b081e6b640" resname="day.min.3">
+        <source>day.min.3</source>
+        <target>Mar</target>
+      </trans-unit>
+      <trans-unit id="fe29af8720636e81871483ece0bb02e5ac61f6ae" resname="day.min.4">
+        <source>day.min.4</source>
+        <target>Mer</target>
+      </trans-unit>
+      <trans-unit id="d02de525414fe89204a1e1fbe836a8222d11c7c0" resname="day.min.5">
+        <source>day.min.5</source>
+        <target>Jeu</target>
+      </trans-unit>
+      <trans-unit id="21eb6530134c2a5f86d441868ecec40a46bca2a6" resname="day.min.6">
+        <source>day.min.6</source>
+        <target>Ven</target>
+      </trans-unit>
+      <trans-unit id="aee1b7f26cbca2cbe77e705f3a407b746428c049" resname="day.min.7">
+        <source>day.min.7</source>
+        <target>Sam</target>
+      </trans-unit>
+      <trans-unit id="97c4a3cb6442fb6d7fc425825163e367a3320428" resname="month.min.1">
+        <source>month.min.1</source>
+        <target>Jan</target>
+      </trans-unit>
+      <trans-unit id="a19f0e469597c7423c39ff4d400c83efa6f4e691" resname="month.min.10">
+        <source>month.min.10</source>
+        <target>Oct</target>
+      </trans-unit>
+      <trans-unit id="8c22834a4692109ceaacfe3e002d5d9c01eb247f" resname="month.min.11">
+        <source>month.min.11</source>
+        <target>Nov</target>
+      </trans-unit>
+      <trans-unit id="5bec591734dc91c2c90d645cfd83cfa4071d238f" resname="month.min.12">
+        <source>month.min.12</source>
+        <target>Dec</target>
+      </trans-unit>
+      <trans-unit id="59151244675ae70ec65692e231ddd2e5da671ac6" resname="month.min.2">
+        <source>month.min.2</source>
+        <target>Fev</target>
+      </trans-unit>
+      <trans-unit id="ed0ea2dacdb54fa07b010a8bc146d2f385157808" resname="month.min.3">
+        <source>month.min.3</source>
+        <target>Mar</target>
+      </trans-unit>
+      <trans-unit id="9be4743918e9eb713d4cb773f89c91db3fab9fa7" resname="month.min.4">
+        <source>month.min.4</source>
+        <target>Avr</target>
+      </trans-unit>
+      <trans-unit id="a99ed79e6ed689e11a467531afa8a022dd0b88c1" resname="month.min.5">
+        <source>month.min.5</source>
+        <target>Mai</target>
+      </trans-unit>
+      <trans-unit id="7c5eca85ab414f6e9072f8c0beae75b91b48aca6" resname="month.min.6">
+        <source>month.min.6</source>
+        <target>Juin</target>
+      </trans-unit>
+      <trans-unit id="bfcd5552e19894f716f4b89491a1244abb096741" resname="month.min.7">
+        <source>month.min.7</source>
+        <target>Juil</target>
+      </trans-unit>
+      <trans-unit id="710e2f3cb0f4f004c565050c952b112848d20e82" resname="month.min.8">
+        <source>month.min.8</source>
+        <target>Aou</target>
+      </trans-unit>
+      <trans-unit id="d86ad3b741eb303c3c6113d6843cb4af2ed61ce1" resname="month.min.9">
+        <source>month.min.9</source>
+        <target>Sep</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

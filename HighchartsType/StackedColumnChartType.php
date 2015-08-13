@@ -4,6 +4,7 @@ namespace EV\HighchartsBundle\HighchartsType;
 
 use EV\HighchartsBundle\HighchartsType\AbstractHighchartsType;
 use EV\HighchartsBundle\Builder\HighchartsBuilder;
+use Symfony\Component\Translation\Translator;
 
 /**
  * Description of StackedColumnChartType
@@ -22,8 +23,8 @@ class StackedColumnChartType extends AbstractHighchartsType{
     
     protected $formatLabelStackedColumn;
     
-    public function __construct(){
-        
+    public function __construct(Translator $translator){
+        parent::__construct($translator);
     }
     
     public function buildHighcharts(HighchartsBuilder $highchartsBuilder,$categories = null,$titleY = null,$dataSeries = null,$formatLabelStackedColumn = null,$additionalOptions = null) {
