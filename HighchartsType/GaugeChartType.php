@@ -15,7 +15,7 @@ class GaugeChartType extends AbstractHighchartsType{
        
     protected $titleY;
     
-    protected $dateSeries;
+    protected $dataSeries;
     
     protected $valMin;
     
@@ -34,7 +34,7 @@ class GaugeChartType extends AbstractHighchartsType{
         $this->titleY = $titleY;
         $this->valMin = $valMin;
         $this->valMax = $valMax;
-        $this->dateSeries = $dataSeries;
+        $this->dataSeries = $dataSeries;
         $this->arrPlotBands = $arrPlotBands;
         $this->additionalOptions = $additionalOptions;
         
@@ -122,7 +122,7 @@ class GaugeChartType extends AbstractHighchartsType{
         
         $arrOptionSeries = array();
         $arrOptionSeries['data'] = array("dataLabels"=>$dataLabelsDataSeries);
-        $serie = $highchartsBuilder->createSeries($this->dateSeries['name'],$this->dateSeries['data'],$arrOptionSeries);
+        $serie = $highchartsBuilder->createSeries($this->dataSeries['name'],$this->dataSeries['data'],$arrOptionSeries);
         
         $highcharts->addSeries($serie);
         
@@ -139,12 +139,12 @@ class GaugeChartType extends AbstractHighchartsType{
         $this->titleY = $titleY;
     }
 
-    public function getDateSeries() {
-        return $this->dateSeries;
+    public function getDataSeries() {
+        return $this->dataSeries;
     }
 
-    public function setDateSeries($dateSeries) {
-        $this->dateSeries = $dateSeries;
+    public function setDataSeries($dataSeries) {
+        $this->dataSeries = $dataSeries;
     }
 
     public function getValMin() {

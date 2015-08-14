@@ -97,12 +97,12 @@ class StackedColumnChartType extends AbstractHighchartsType{
         $this->titleY = $titleY;
     }
 
-    public function getDateSeries() {
-        return $this->dateSeries;
+    public function getDataSeries() {
+        return $this->dataSeries;
     }
 
-    public function setDateSeries($dateSeries) {
-        $this->dateSeries = $dateSeries;
+    public function setDataSeries($dataSeries) {
+        $this->dataSeries = $dataSeries;
     }
 
     public function getAdditionalOptions() {

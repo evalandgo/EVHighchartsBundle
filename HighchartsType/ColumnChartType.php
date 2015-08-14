@@ -17,7 +17,7 @@ class ColumnChartType extends AbstractHighchartsType{
     
     protected $titleY;
     
-    protected $dateSeries;
+    protected $dataSeries;
     
     protected $additionalOptions;
     
@@ -29,7 +29,7 @@ class ColumnChartType extends AbstractHighchartsType{
                         
         $this->categories = $categories;
         $this->titleY = $titleY;
-        $this->dateSeries = $dataSeries;
+        $this->dataSeries = $dataSeries;
         $this->additionalOptions = $additionalOptions;
         
         $highcharts = $highchartsBuilder->getHighcharts();
@@ -44,7 +44,7 @@ class ColumnChartType extends AbstractHighchartsType{
         $yAxis = $highchartsBuilder->createYAxis($this->titleY);
         $highcharts->addYAxis($yAxis);
         
-        foreach($this->dateSeries as $series){
+        foreach($this->dataSeries as $series){
             $serie = $highchartsBuilder->createSeries($series['name'],$series['data'],$this->additionalOptions);
             $highcharts->addSeries($serie);
         }
@@ -71,12 +71,12 @@ class ColumnChartType extends AbstractHighchartsType{
         $this->titleY = $titleY;
     }
 
-    public function getDateSeries() {
-        return $this->dateSeries;
+    public function getDataSeries() {
+        return $this->dataSeries;
     }
 
-    public function setDateSeries($dateSeries) {
-        $this->dateSeries = $dateSeries;
+    public function setDataSeries($dataSeries) {
+        $this->dataSeries = $dataSeries;
     }
 
     public function getAdditionalOptions() {

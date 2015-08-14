@@ -14,7 +14,7 @@ use Symfony\Component\Translation\Translator;
  */
 class PieChartType extends AbstractHighchartsType{
         
-    protected $dateSeries;
+    protected $dataSeries;
     
     protected $additionalOptions;
     
@@ -24,7 +24,7 @@ class PieChartType extends AbstractHighchartsType{
     
     public function buildHighcharts(HighchartsBuilder $highchartsBuilder,$dataSeries = null,$additionalOptions = null) {
 
-        $this->dateSeries = $dataSeries;
+        $this->dataSeries = $dataSeries;
         $this->additionalOptions = $additionalOptions;
         
         $highcharts = $highchartsBuilder->getHighcharts();
@@ -53,7 +53,7 @@ class PieChartType extends AbstractHighchartsType{
             $arrOptionSeries['data'] = array('dataLabels'=>$dataLabels);
         }
         
-        $serie = $highchartsBuilder->createSeries($this->dateSeries['name'],$this->dateSeries['data'],$arrOptionSeries);
+        $serie = $highchartsBuilder->createSeries($this->dataSeries['name'],$this->dataSeries['data'],$arrOptionSeries);
         $highcharts->addSeries($serie);
         
         if(isset($this->additionalOptions['subtitle']))
@@ -74,12 +74,12 @@ class PieChartType extends AbstractHighchartsType{
         return $highchartsBuilder;
     }
     
-    public function getDateSeries() {
-        return $this->dateSeries;
+    public function getDataSeries() {
+        return $this->dataSeries;
     }
 
-    public function setDateSeries($dateSeries) {
-        $this->dateSeries = $dateSeries;
+    public function setDataSeries($dataSeries) {
+        $this->dataSeries = $dataSeries;
     }
 
     public function getAdditionalOptions() {
