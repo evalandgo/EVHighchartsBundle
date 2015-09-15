@@ -53,8 +53,9 @@ class Series extends Base{
                 $dataSerie->setX($data["x"]);
             else
                 $dataSerie->setX($i);
-            
-            $dataSerie->setY($data["y"]);
+
+            if($data["y"] != null)
+                $dataSerie->setY($data["y"]);
             
             if(isset($data["name"])){
                 $dataSerie->setName($data["name"]);
