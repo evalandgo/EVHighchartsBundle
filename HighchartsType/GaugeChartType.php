@@ -71,7 +71,7 @@ class GaugeChartType extends AbstractHighchartsType{
         
         
         foreach($this->arrPlotBands as $plotBand){
-            $highchartsBuilder->addPlotBandsAxis($yAxis,$plotBand['from'],$plotBand['to'],$plotBand['color'],'50%',$plotBand['label'],$plotBand['align'],$plotBand['verticalAlign']);
+            $highchartsBuilder->addPlotBandsAxis($yAxis,$plotBand['from'],$plotBand['to'],$plotBand['color'],'50%',$plotBand['label'],$plotBand['align'],$plotBand['verticalAlign'],$plotBand['x'],$plotBand['y']);
         }
      
         $yAxis->setGridLineColor("#0000ffff");

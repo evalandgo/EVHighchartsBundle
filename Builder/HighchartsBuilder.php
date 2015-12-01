@@ -121,7 +121,7 @@ class HighchartsBuilder {
         return $dataLabels;
     }
     
-    public function addPlotBandsAxis($axis,$from,$to,$color,$thickness,$title,$align,$vertical){
+    public function addPlotBandsAxis($axis,$from,$to,$color,$thickness,$title,$align,$vertical,$x,$y){
         $plotBands = new PlotBandsAxis;
         $plotBands->setFrom($from);
         $plotBands->setTo($to);
@@ -130,6 +130,8 @@ class HighchartsBuilder {
         $plotBands->getLabel()->setText($title);
         $plotBands->getLabel()->setAlign($align);
         $plotBands->getLabel()->setVerticalAlign($vertical);
+        $plotBands->getLabel()->setX($x);
+        $plotBands->getLabel()->setY($y);
         $plotBands->getLabel()->setUseHtml(true);
         
         $axis->addPlotBands($plotBands);
