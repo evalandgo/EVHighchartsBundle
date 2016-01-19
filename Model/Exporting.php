@@ -7,6 +7,8 @@ use EV\HighchartsBundle\Model\ChartOptions;
 
 class Exporting extends Base{
     
+    protected $allowHTML = true;
+    
     protected $buttons;
         
     protected $chartOptions;
@@ -35,6 +37,14 @@ class Exporting extends Base{
         $this->chartOptions = new ChartOptions();
     }
     
+    public function getAllowHTML() {
+        return $this->allowHTML;
+    }
+
+    public function setAllowHTML($allowHTML) {
+        $this->allowHTML = $allowHTML;
+    }
+
     public function getButtons() {
         return $this->buttons;
     }
