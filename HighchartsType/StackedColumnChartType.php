@@ -75,7 +75,11 @@ class StackedColumnChartType extends AbstractHighchartsType{
         $stackLabels->setEnabled(true);
         
         $column = $highcharts->getPlotOptions()->getColumn();
-        $column->setStacking('normal');      
+        
+        if(isset($this->additionalOptions['stackingType']))
+            $column->setStacking($this->additionalOptions['stackingType']);
+        else
+            $column->setStacking('normal');
         
         
         return $highchartsBuilder;
