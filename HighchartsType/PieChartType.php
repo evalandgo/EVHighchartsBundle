@@ -46,12 +46,11 @@ class PieChartType extends AbstractHighchartsType{
         
         $arrOptionSeries = array();
         $arrOptionSeries['series'] = array('type'=>'pie');
-        
-        if(isset($this->additionalOptions['data']) && isset($this->additionalOptions['data']['labels']) ){
-            $dataLabels = new DataLabelsPiePlotOptions();
-            $dataLabels->setEnabled($this->additionalOptions['data']['labels']);
-            $arrOptionSeries['data'] = array('dataLabels'=>$dataLabels);
-        }
+
+       if(isset($this->additionalOptions['data']) && isset($this->additionalOptions['data']['dataLabels']) ){
+           $dataLabels =$this->additionalOptions['data']['dataLabels'];
+           $arrOptionSeries['data'] = array('dataLabels' => $dataLabels);
+       }
         
         $serie = $highchartsBuilder->createSeries($this->dataSeries['name'],$this->dataSeries['data'],$arrOptionSeries);
         $highcharts->addSeries($serie);
