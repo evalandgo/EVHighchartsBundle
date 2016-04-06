@@ -28,7 +28,7 @@ class TooltipPlotOptions extends Base{
     protected $valueSuffix =  null;
     
     protected $xDateFormat =  null;
-    
+
     public function getDateTimeLabelFormats() {
         return $this->dateTimeLabelFormats;
     }

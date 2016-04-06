@@ -61,7 +61,7 @@ class GaugeChartType extends AbstractHighchartsType{
         $yAxis->getLabels()->setFormat('{value}');
         $yAxis->getLabels()->setUseHtml(true);*/
         $yAxis->getLabels()->setEnabled(false);
-                
+
         $yAxis->setTickPositions(array(0,20,50,80,100));
         $yAxis->setMinorTickLength(0);
         $yAxis->setMin($this->valMin);
@@ -123,7 +123,6 @@ class GaugeChartType extends AbstractHighchartsType{
         $arrOptionSeries = array();
         $arrOptionSeries['data'] = array("dataLabels"=>$dataLabelsDataSeries);
         $serie = $highchartsBuilder->createSeries($this->dataSeries['name'],$this->dataSeries['data'],$arrOptionSeries);
-        
         $highcharts->addSeries($serie);
         
         //$highcharts->getLegend()->setEnabled(false);

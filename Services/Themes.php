@@ -19,7 +19,7 @@ class Themes
         $path = null;
             
         if($highchartsView->getTheme() == null){
-            $path = $this->fileLocator->locate($this->arrThemes['default']);   
+            $path = $this->fileLocator->locate($this->arrThemes['default']);
         }else{ 
             $path = $this->fileLocator->locate($this->arrThemes[$highchartsView->getTheme()]);
         }

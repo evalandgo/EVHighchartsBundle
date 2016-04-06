@@ -44,7 +44,6 @@ class HighchartsBuilder {
     public function createSeries($name,$data,$arrOptions = null){
         $series = new Series();
         $series->setName($name);
-        
         if(isset($arrOptions['data']))
             $series->addData($data,$arrOptions['data']);
         else

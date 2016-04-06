@@ -15,6 +15,8 @@ class Series extends Base{
     protected $id;
         
     protected $index = null;
+
+    protected $innerSize = 0;
         
     protected $legendIndex = null;
         
@@ -112,6 +114,16 @@ class Series extends Base{
 
     public function setIndex($index) {
         $this->index = $index;
+    }
+
+    public function getInnerSize()
+    {
+        return $this->innerSize;
+    }
+
+    public function setInnerSize($innerSize)
+    {
+        $this->innerSize = $innerSize;
     }
 
     public function getLegendIndex() {

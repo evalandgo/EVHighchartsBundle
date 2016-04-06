@@ -35,17 +35,17 @@ class YAxis extends Base{
     //protected $events;
     
     protected $floor = null;
-    
+
     protected $gridLineColor = "#C0C0C0";
-    
+
     protected $gridLineDashStyle = "Solid";
-    
+
     protected $gridLineInterpolation = null;
-    
+
     protected $gridLineWidth = 1;
-    
+
     protected $gridZIndex = 1;
-    
+
     protected $id = null;
     
     protected $labels;
@@ -67,27 +67,27 @@ class YAxis extends Base{
     protected $min = null;
     
     protected $minColor = "#EFEFFF";
-    
+
     protected $minPadding = 0.05;
-    
+
     protected $minRange = null;
-    
+
     protected $minTickInterval = null;
-    
+
     protected $minorGridLineColor = "#E0E0E0";
-    
+
     protected $minorGridLineDashStyle = "Solid";
-    
+
     protected $minorGridLineWidth = 1;
-    
+
     protected $minorTickColor = "#A0A0A0";
-    
+
     protected $minorTickInterval = null;
-    
+
     protected $minorTickLength = 2;
-    
+
     protected $minorTickPosition = "outside";
-    
+
     protected $minorTickWidth = 0;
     
     protected $offset = 0;

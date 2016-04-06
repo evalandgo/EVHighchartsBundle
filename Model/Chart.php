@@ -90,7 +90,7 @@ class Chart extends Base{
     
     protected $style = null;
     
-    protected $type = "line";
+    protected $type;
     
     protected $width = null;
     

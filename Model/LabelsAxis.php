@@ -26,13 +26,13 @@ class LabelsAxis extends Base{
     protected $step =  null;
     
     protected $style =  "color: '#6D869F',fontWeight: 'bold'";
-    
+
     protected $useHTML =  false;
-    
+
     protected $x = 0;
-    
+
     protected $y =  null;
-    
+
     protected $zIndex =  7;
     
     

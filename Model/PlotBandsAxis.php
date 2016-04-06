@@ -18,11 +18,11 @@ class PlotBandsAxis extends Base{
     
     protected $id =  null;
     
-    protected $innerRadius = null;
+    protected $innerRadius = '100%';
     
     protected $label;
     
-    protected $outerRadius = '100%';
+    protected $outerRadius = 0;
     
     protected $thickness = 10;
     

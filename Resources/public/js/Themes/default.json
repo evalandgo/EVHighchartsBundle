@@ -1,5 +1,4 @@
 {
-    "colors": ["#89c23f", "#28a2d5", "#f3c733", "#ed8e20", "#71196f","#d31c21"],
     "chart": {"backgroundColor": null},
     "title" : {
         "style": {

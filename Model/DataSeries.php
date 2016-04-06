@@ -20,9 +20,9 @@ class DataSeries extends Base{
     protected $isIntermediateSum = false;
     
     protected $isSum = false;
-    
+
     protected $legendIndex = null;
-    
+
     protected $marker;
     
     protected $name = null;
@@ -98,7 +98,7 @@ class DataSeries extends Base{
         return $this->marker;
     }
 
-    public function setMarker(MarkerDataSeries $marker) {
+    public function setMarker(Marker $marker) {
         $this->marker = $marker;
     }
 
