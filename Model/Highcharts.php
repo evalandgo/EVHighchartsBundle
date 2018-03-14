@@ -65,14 +65,14 @@ class Highcharts extends Base{
     protected $xAxis;
     
     protected $yAxis;
-    
-    public function __construct()
+
+    public function __construct($export_url = "http://export.highcharts.com/")
     {
          $this->chart = new Chart();
          $this->colors = array('#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9','#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1');
          $this->credits = new Credit();
          $this->drilldown = new Drilldown();
-         $this->exporting = new Exporting();
+         $this->exporting = new Exporting($export_url);
          $this->legend = new Legend();
          $this->labels = new Labels();
          $this->loading = new Loading();

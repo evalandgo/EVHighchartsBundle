@@ -32,7 +32,7 @@ class HighchartsBuilder {
     protected $export_url;
     
     public function __construct(Themes $themes,$export_url) {
-        $this->highcharts = new Highcharts();
+        $this->highcharts = new Highcharts($export_url);
         $this->themes = $themes;
         $this->export_url = $export_url;
     }

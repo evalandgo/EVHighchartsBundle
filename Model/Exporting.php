@@ -27,14 +27,15 @@ class Exporting extends Base{
         
     protected $type = "image/png";
         
-    //protected $url = "http =";//export.highcharts.com;
+    protected $url;
         
     protected $width = "undefined";
         
-    public function __construct()
+    public function __construct($export_url = "http://export.highcharts.com/")
     {
         $this->buttons = new ButtonsExporting();
         $this->chartOptions = new ChartOptions();
+        $this->url = $export_url;
     }
     
     public function getAllowHTML() {
