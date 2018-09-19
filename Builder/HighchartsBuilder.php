@@ -148,34 +148,40 @@ class HighchartsBuilder {
         $this->highchartsView = new HighchartsView($this->highcharts,$theme);
         return $this->highchartsView;
     }
-    
-    public function export($type = 'image/jpeg', $theme = null){
+
+    /**
+     * @param string $type Exporting format
+     * @param null $theme Theme to apply on the chart
+     * @param null $data Json raw data to send (ignores $type)
+     * @return array
+     */
+    public function export($type = 'image/jpeg', $theme = null,$data = null){
         $this->highcharts->getLegend()->setUseHTML(false);
-        
         $graphJson = $this->themes->applyTheme($this->createView($theme));
+        if($data===null)
+            $data = array('async' => false, 'type' => $type, 'options' => $graphJson, 'scale' => 2);
 
-        $data = array('async' => false, 'type' => $type, 'options' => $graphJson, 'scale' => 2);
-        
         $ch = curl_init();
-
+        var_dump($data);
         curl_setopt($ch, CURLOPT_URL, $this->export_url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST'); 
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_HEADER,false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_VERBOSE, false); 
+        curl_setopt($ch, CURLOPT_VERBOSE, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_FAILONERROR, true);
         $content = curl_exec($ch);
         $statut = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        
+
         curl_close($ch);
 
         return array(
             'status' => $statut,
             'content' => $content,
         );
+
     }
     
     public function exportOnServer($filename, $type = 'image/jpeg', $theme = null) {
@@ -190,6 +196,24 @@ class HighchartsBuilder {
             //throw new \Exception($export['content'],$export['status']);
         }
         
+    }
+
+    /**
+     * @param $filename
+     * @param $data json string representing the data of the chart
+     * @return bool
+     *
+     * Exports the chart on the server
+     */
+    public function exportOnServerWithData($filename, $data) {
+        $fs = new Filesystem();
+        $export = $this->export(null, null,$data);
+        if($export['status'] == 200) {
+            $fs->dumpFile($filename, $export['content']);
+            return true;
+        }else{
+            throw new \Exception($export['content'],$export['status']);
+        }
     }
     
     public function exportImgResource($type = 'image/jpeg', $theme = null) {
