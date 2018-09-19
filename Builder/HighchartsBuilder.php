@@ -162,7 +162,6 @@ class HighchartsBuilder {
             $data = array('async' => false, 'type' => $type, 'options' => $graphJson, 'scale' => 2);
 
         $ch = curl_init();
-        var_dump($data);
         curl_setopt($ch, CURLOPT_URL, $this->export_url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_HEADER,false);
