@@ -20,7 +20,7 @@ class HighchartsTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'highcharts_generation_render' => new \Twig\TwigFunction($this, 'render', array('is_safe' => array('html'),'needs_environment' => true)),
+            new \Twig\TwigFunction('highcharts_generation_render',array($this, 'render'), array('is_safe' => array('html'),'needs_environment' => true)),
         );
     }
     
