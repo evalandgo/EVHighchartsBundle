@@ -4,7 +4,7 @@ namespace EV\HighchartsBundle\HighchartsType;
 
 use EV\HighchartsBundle\HighchartsType\AbstractHighchartsType;
 use EV\HighchartsBundle\Builder\HighchartsBuilder;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\DataCollectorTranslator as Translator;
 
 /**
  * Description of GaugeChartType

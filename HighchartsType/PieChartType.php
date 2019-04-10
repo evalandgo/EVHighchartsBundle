@@ -5,7 +5,7 @@ namespace EV\HighchartsBundle\HighchartsType;
 use EV\HighchartsBundle\HighchartsType\AbstractHighchartsType;
 use EV\HighchartsBundle\Builder\HighchartsBuilder;
 use EV\HighchartsBundle\Model\DataLabelsPiePlotOptions;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\DataCollectorTranslator as Translator;
 
 /**
  * Description of PieChartType
