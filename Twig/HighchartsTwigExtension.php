@@ -6,23 +6,10 @@ use EV\HighchartsBundle\Services\Themes;
 
 class HighchartsTwigExtension extends \Twig_Extension
 {
-    /**
-     * @var \Twig_Environment
-    */
-    protected $environment;
-    
     protected $theme;
 
     public function __construct(Themes $theme){
         $this->theme = $theme;
-    }    
-    
-    /**
-     * {@inheritDoc}
-     */
-    public function initRuntime(\Twig_Environment $environment)
-    {
-        $this->environment = $environment;
     }
     
     /**
@@ -33,7 +20,7 @@ class HighchartsTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'highcharts_generation_render' => new \Twig_Function_Method($this, 'render', array('is_safe' => array('html'))),
+            'highcharts_generation_render' => new \Twig\TwigFunction($this, 'render', array('is_safe' => array('html'),'needs_environment' => true)),
         );
     }
     
@@ -46,7 +33,7 @@ class HighchartsTwigExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function render($data,$target = null)
+    public function render(\Twig_Environment $environment,$data,$target = null)
     {
         $addTarget = null;
         
@@ -57,7 +44,7 @@ class HighchartsTwigExtension extends \Twig_Extension
         
         $data = $this->theme->applyTheme($data);
         
-        return $this->environment->render("EVHighchartsBundle:Highcharts:graphGenerator.html.twig",array('target'=>$target,'data'=>$data,'addTarget'=>$addTarget));
+        return $environment->render("EVHighchartsBundle:Highcharts:graphGenerator.html.twig",array('target'=>$target,'data'=>$data,'addTarget'=>$addTarget));
     }
     
     public function getName() {

@@ -24,7 +24,7 @@ abstract class AbstractHighchartsType {
         $this->months = array('',$this->translator->trans('month.min.1', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.2', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.3', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.4', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.5', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.6', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.7', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.8', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.9', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.10', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.11', array(), 'HighchartsBundle_Type'),$this->translator->trans('month.min.12', array(), 'HighchartsBundle_Type'));
     }
 
-    abstract protected function buildHighcharts(HighchartsBuilder $highchartsBuilder);
+    abstract public function buildHighcharts(HighchartsBuilder $highchartsBuilder);
 }
 
 ?>
