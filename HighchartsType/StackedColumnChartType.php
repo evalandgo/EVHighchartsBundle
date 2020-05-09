@@ -117,6 +117,21 @@ class StackedColumnChartType extends AbstractHighchartsType{
         $this->additionalOptions = $additionalOptions;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFormatLabelStackedColumn()
+    {
+        return $this->formatLabelStackedColumn;
+    }
+
+    /**
+     * @param mixed $formatLabelStackedColumn
+     */
+    public function setFormatLabelStackedColumn($formatLabelStackedColumn)
+    {
+        $this->formatLabelStackedColumn = $formatLabelStackedColumn;
+    }
 
 }
 
