@@ -4,7 +4,6 @@ namespace EV\HighchartsBundle\HighchartsType;
 
 use EV\HighchartsBundle\HighchartsType\AbstractHighchartsType;
 use EV\HighchartsBundle\Builder\HighchartsBuilder;
-use Symfony\Component\Translation\DataCollectorTranslator as Translator;
 
 /**
  * Description of ColumnChartType
@@ -21,7 +20,7 @@ class ColumnChartType extends AbstractHighchartsType{
     
     protected $additionalOptions;
     
-    public function __construct(Translator $translator){
+    public function __construct($translator){
         parent::__construct($translator);
     }
     

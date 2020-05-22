@@ -5,7 +5,6 @@ namespace EV\HighchartsBundle\HighchartsType;
 use EV\HighchartsBundle\HighchartsType\AbstractHighchartsType;
 use EV\HighchartsBundle\Builder\HighchartsBuilder;
 use EV\HighchartsBundle\Model\DataLabelsPiePlotOptions;
-use Symfony\Component\Translation\DataCollectorTranslator as Translator;
 
 /**
  * Description of PieChartType
@@ -18,7 +17,7 @@ class PieChartType extends AbstractHighchartsType{
     
     protected $additionalOptions;
     
-    public function __construct(Translator $translator){
+    public function __construct($translator){
         parent::__construct($translator);
     }
     
