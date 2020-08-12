@@ -44,7 +44,7 @@ class HighchartsTwigExtension extends \Twig_Extension
         
         $data = $this->theme->applyTheme($data);
         
-        return $environment->render("EVHighchartsBundle:Highcharts:graphGenerator.html.twig",array('target'=>$target,'data'=>$data,'addTarget'=>$addTarget));
+        return $environment->render("@EVHighcharts/Highcharts/graphGenerator.html.twig",array('target'=>$target,'data'=>$data,'addTarget'=>$addTarget));
     }
     
     public function getName() {
