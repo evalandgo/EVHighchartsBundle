@@ -149,6 +149,13 @@ class HighchartsBuilder {
         return $this->highchartsView;
     }
 
+     public function getJSON($theme=null)
+    {
+        $this->highcharts->getLegend()->setUseHTML(false);
+        $graphJson = $this->themes->applyTheme($this->createView($theme));
+
+        return $graphJson;
+    }
     /**
      * @param string $type Exporting format
      * @param null $theme Theme to apply on the chart
@@ -157,7 +164,7 @@ class HighchartsBuilder {
      */
     public function export($type = 'image/jpeg', $theme = null,$data = null){
         $this->highcharts->getLegend()->setUseHTML(false);
-        $graphJson = $this->themes->applyTheme($this->createView($theme));
+        $graphJson = $this->getJSON($theme)
         if($data===null)
             $data = array('async' => false, 'type' => $type, 'options' => $graphJson, 'scale' => 2);
 
