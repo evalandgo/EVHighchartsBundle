@@ -164,7 +164,7 @@ class HighchartsBuilder {
      */
     public function export($type = 'image/jpeg', $theme = null,$data = null){
         $this->highcharts->getLegend()->setUseHTML(false);
-        $graphJson = $this->getJSON($theme)
+        $graphJson = $this->getJSON($theme);
         if($data===null)
             $data = array('async' => false, 'type' => $type, 'options' => $graphJson, 'scale' => 2);
 
