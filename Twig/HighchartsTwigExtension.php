@@ -5,6 +5,7 @@ namespace EV\HighchartsBundle\Twig;
 use EV\HighchartsBundle\Services\Themes;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 class HighchartsTwigExtension extends AbstractExtension
 {
