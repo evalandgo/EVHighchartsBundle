@@ -3,8 +3,10 @@
 namespace EV\HighchartsBundle\Twig;
 
 use EV\HighchartsBundle\Services\Themes;
+use Twig\Environment;
+use Twig\Extension\AbstractExtension;
 
-class HighchartsTwigExtension extends \Twig_Extension
+class HighchartsTwigExtension extends AbstractExtension
 {
     protected $theme;
 
@@ -20,7 +22,7 @@ class HighchartsTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig\TwigFunction('highcharts_generation_render',array($this, 'render'), array('is_safe' => array('html'),'needs_environment' => true)),
+            new TwigFunction('highcharts_generation_render',array($this, 'render'), array('is_safe' => array('html'),'needs_environment' => true)),
         );
     }
     
@@ -33,7 +35,7 @@ class HighchartsTwigExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function render(\Twig_Environment $environment,$data,$target = null)
+    public function render(Environment $environment,$data,$target = null)
     {
         $addTarget = null;
         
